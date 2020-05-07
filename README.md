@@ -1,4 +1,4 @@
-# Portfolio
+# Portfolio - Alister George Luiz
 Portfolio website and cross platform application
 
 **index.dart** - This file is to hold all my packages, which are required in other classes. I have imported this ONE file in all my other classes and widgets.
