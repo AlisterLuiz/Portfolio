@@ -1,5 +1,11 @@
 import 'package:portfolio_website/utilities/index.dart';
 
+
+const kNavigationBarTextStyle = TextStyle(
+  fontSize: 11.5,
+  fontWeight: FontWeight.w600,
+);
+
 const konboardingtextdecoration = InputDecoration(
   labelStyle: TextStyle(
     color: Colors.white,
@@ -7,7 +13,7 @@ const konboardingtextdecoration = InputDecoration(
   ),
   labelText: "Email Address",
   fillColor: Colors.white,
-  enabledBorder: UnderlineInputBorder(
+  enabledBorder: OutlineInputBorder(
     borderSide: BorderSide(color: Colors.white, width: 2.0),
   ),
 );

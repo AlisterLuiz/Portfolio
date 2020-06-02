@@ -1,5 +1,5 @@
 List testimonials = List();
-void initializeData() {
+void initializeTestimonialsData() {
   testimonials.add([
     "https://images.pexels.com/photos/4253929/pexels-photo-4253929.jpeg?cs=srgb&dl=water-falls-in-the-middle-of-the-forest-4253929.jpg&fm=jpg",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",

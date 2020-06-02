@@ -1,12 +1,15 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:portfolio_website/utilities/index.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(
     ChangeNotifierProvider<ThemeModel>(
       create: (BuildContext context) => ThemeModel(),
-      child: MyApp(),
+      child: DevicePreview(
+        enabled: true,
+        builder: (context) => MyApp(),
+      ),
     ),
   );
 }
@@ -14,11 +17,24 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Portfolio - Alister Luiz',
-      theme: Provider.of<ThemeModel>(context).currentTheme,
-      initialRoute: Routes.navigation,
-      routes: Routes.routes,
+    initializeBlogsData();
+    initializeTestimonialsData();
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<CurrentPageProvider>(
+          create: (context) => CurrentPageProvider(),
+        ),
+        ChangeNotifierProvider<CurrentProjectIDProvider>(
+          create: (context) => CurrentProjectIDProvider(),
+        )
+      ],
+      child: MaterialApp(
+        builder: DevicePreview.appBuilder,
+        title: 'Portfolio - Alister Luiz',
+        theme: Provider.of<ThemeModel>(context).currentTheme,
+        initialRoute: Routes.homeView,
+        routes: Routes.routes,
+      ),
     );
   }
 }
