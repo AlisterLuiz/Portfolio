@@ -25,6 +25,10 @@ export 'package:portfolio_website/utilities/theme.dart';
 export 'package:portfolio_website/widgets/primaryButton.dart';
 export 'package:portfolio_website/widgets/baseWidget.dart';
 export 'package:portfolio_website/widgets/common/welcomePageWidgets.dart';
+export 'package:portfolio_website/widgets/common/blogsPageWidgets.dart';
+export 'package:portfolio_website/widgets/common/projectsPageWidgets.dart';
+export 'package:portfolio_website/widgets/common/testimonialsPageWidgets.dart';
+export 'package:portfolio_website/widgets/common/aboutPageWidgets.dart';
 
 // Responsive
 export 'package:portfolio_website/enums/device_screen_type.dart';

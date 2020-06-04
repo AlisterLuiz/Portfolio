@@ -1,5 +1,4 @@
 import 'package:portfolio_website/utilities/index.dart';
-import 'package:portfolio_website/widgets/common/projectsPageWidgets.dart';
 
 class ProjectsPageLandscape extends StatefulWidget {
   @override

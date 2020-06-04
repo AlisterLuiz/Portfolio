@@ -26,7 +26,7 @@ class WelcomePageLandscape extends StatelessWidget {
                     getName(),
                   ],
                 ),
-                getLinks(context, 1),
+                getInfoLinks(context, 1),
               ],
             ),
           ),

@@ -28,7 +28,7 @@ class WelcomePagePortrait extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              getLinks(context, 2),
+              getInfoLinks(context, 2),
             ],
           ),
           SizedBox(height: 20),

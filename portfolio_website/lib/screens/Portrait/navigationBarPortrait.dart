@@ -26,7 +26,6 @@ class _NavBarPortraitState extends State<NavBarPortrait> {
       body: Container(
           padding: EdgeInsets.symmetric(
             horizontal: screenWidth(context) * 0.1,
-            // vertical: screenHeight(context) * 0.03,
           ),
           child: _children[_currentIndex.getIndex()]),
       bottomNavigationBar: BottomNavigationBar(

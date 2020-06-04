@@ -1,5 +1,4 @@
 import 'package:portfolio_website/utilities/index.dart';
-import 'package:portfolio_website/widgets/common/projectsPageWidgets.dart';
 
 class ProjectsPagePortrait extends StatefulWidget {
   @override
@@ -13,7 +12,6 @@ class _ProjectsPagePortraitState extends State<ProjectsPagePortrait> {
       child: ListView(
         children: [
           TabBar(
-            // labelPadding: EdgeInsets.symmetric(horizontal: 2.0),
             isScrollable: true,
             labelColor: Theme.of(context).primaryColor,
             tabs: [

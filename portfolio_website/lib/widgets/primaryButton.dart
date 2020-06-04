@@ -20,7 +20,6 @@ Container primaryButton(
         children: [
           Icon(
             icon,
-            // color: Theme.of(context).scaffoldBackgroundColor,
           ),
           SizedBox(
             width: 10,
@@ -32,7 +31,6 @@ Container primaryButton(
               style: TextStyle(
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.w700,
-                // color: Theme.of(context).scaffoldBackgroundColor,
                 fontSize: 13,
               ),
               maxLines: 2,

@@ -31,7 +31,6 @@ Widget getTechStack(BuildContext context, int orientation) {
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.w700,
                 color: Theme.of(context).scaffoldBackgroundColor,
-                // fontSize: 8,
               ),
             ),
           ],
@@ -44,7 +43,6 @@ Widget getTechStack(BuildContext context, int orientation) {
 
 Widget getLink(BuildContext context, IconData icon, String text) {
   return Container(
-    // height: screenHeight(context) * 0.04,
     padding: EdgeInsets.symmetric(horizontal: 5),
     child: RaisedButton(
       textColor: Color(0xff8240D8),
@@ -67,7 +65,6 @@ Widget getLink(BuildContext context, IconData icon, String text) {
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.w700,
               color: Theme.of(context).scaffoldBackgroundColor,
-              // fontSize: 10.5,
             ),
           ),
         ],
@@ -100,8 +97,8 @@ Widget getProjectList(BuildContext context, int orientation) {
     child: Card(
       color: Theme.of(context).scaffoldBackgroundColor,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+          
+         
         children: [
           Image.network(
             blogs[0][0],
@@ -111,9 +108,7 @@ Widget getProjectList(BuildContext context, int orientation) {
           ),
           SizedBox(height: screenHeight(context) * 0.02),
           Container(
-            // width: screenWidth(context) * 0.6,
             height: screenHeight(context) * 0.15,
-            // padding: EdgeInsets.symmetric(horizontal: 4.0),
             child: FittedBox(
               fit: BoxFit.fitHeight,
               child: Column(

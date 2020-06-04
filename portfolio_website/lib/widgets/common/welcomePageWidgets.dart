@@ -26,7 +26,7 @@ Column getName() {
   );
 }
 
-Column getLinks(BuildContext context, int pos) {
+Column getInfoLinks(BuildContext context, int pos) {
   return Column(
     crossAxisAlignment:
         (pos == 1) ? CrossAxisAlignment.start : CrossAxisAlignment.end,
