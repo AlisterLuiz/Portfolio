@@ -102,7 +102,7 @@ class _NavBarLandscapeState extends State<NavBarLandscape> {
                 FittedBox(
                   fit: BoxFit.contain,
                   child: Container(
-                      height: screenHeight(context) * 0.9,
+                      height: screenHeight(context) * 0.89,
                       width: screenWidth(context) * 0.9,
                       padding:
                           EdgeInsets.only(top: screenHeight(context) * 0.05),

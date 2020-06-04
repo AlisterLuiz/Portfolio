@@ -24,6 +24,7 @@ export 'package:portfolio_website/utilities/theme.dart';
 //Widgets
 export 'package:portfolio_website/widgets/primaryButton.dart';
 export 'package:portfolio_website/widgets/baseWidget.dart';
+export 'package:portfolio_website/widgets/common/welcomePageWidgets.dart';
 
 // Responsive
 export 'package:portfolio_website/enums/device_screen_type.dart';

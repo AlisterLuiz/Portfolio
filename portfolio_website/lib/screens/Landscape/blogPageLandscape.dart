@@ -19,11 +19,11 @@ class _BlogPageLandscapeState extends State<BlogPageLandscape> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(height: 20),
+        // SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            AutoSizeText(
               'Latest Blogs',
               style: TextStyle(
                 fontSize: 35,
@@ -193,7 +193,7 @@ class _BlogPageLandscapeState extends State<BlogPageLandscape> {
                   options: CarouselOptions(
                     enlargeCenterPage: true,
                     // viewportFraction: 0.6,
-                    height: screenHeight(context) * 0.55,
+                    // height: screenHeight(context) * 0.55,
                   ),
                   carouselController: _controller,
                 ),
