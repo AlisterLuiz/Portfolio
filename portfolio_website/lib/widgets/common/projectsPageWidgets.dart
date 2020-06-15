@@ -25,11 +25,12 @@ Widget getTechStack(BuildContext context, int orientation) {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            AutoSizeText(
               "Flutter",
               style: TextStyle(
                 fontFamily: 'Montserrat',
-                fontWeight: FontWeight.w700,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
                 color: Theme.of(context).scaffoldBackgroundColor,
               ),
             ),
@@ -41,20 +42,20 @@ Widget getTechStack(BuildContext context, int orientation) {
   );
 }
 
-Widget getLink(BuildContext context, IconData icon, String text) {
+Widget getLink(BuildContext context, IconData icon, String text, int type) {
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: 5),
+    padding: EdgeInsets.symmetric(horizontal: 10),
     child: RaisedButton(
-      textColor: Color(0xff8240D8),
-      color: Theme.of(context).primaryColor,
+      textColor: Theme.of(context).primaryColor,
+      color: (type == 1) ? Color(0xff0072b1) : Color(0xff211F1F),
       elevation: 4,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
             icon,
-            color: Theme.of(context).scaffoldBackgroundColor,
-            size: 14,
+            // color: Theme.of(context).primaryColor,
+            size: 20,
           ),
           SizedBox(
             width: 5,
@@ -63,8 +64,9 @@ Widget getLink(BuildContext context, IconData icon, String text) {
             text,
             style: TextStyle(
               fontFamily: 'Montserrat',
+              fontSize: 20,
               fontWeight: FontWeight.w700,
-              color: Theme.of(context).scaffoldBackgroundColor,
+              // color: Theme.of(context).primaryColor,
             ),
           ),
         ],
@@ -79,8 +81,8 @@ Widget getLinks(BuildContext context) {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        getLink(context, FontAwesomeIcons.linkedinIn, 'LinkedIn'),
-        getLink(context, FontAwesomeIcons.github, 'GitHub'),
+        getLink(context, FontAwesomeIcons.linkedinIn, 'LinkedIn', 1),
+        getLink(context, FontAwesomeIcons.github, 'GitHub', 2),
       ],
     ),
   );
@@ -97,8 +99,6 @@ Widget getProjectList(BuildContext context, int orientation) {
     child: Card(
       color: Theme.of(context).scaffoldBackgroundColor,
       child: Column(
-          
-         
         children: [
           Image.network(
             blogs[0][0],
@@ -119,7 +119,7 @@ Widget getProjectList(BuildContext context, int orientation) {
                   AutoSizeText(
                     'Project Name',
                     style: TextStyle(
-                      fontSize: 17,
+                      fontSize: 30,
                       fontWeight: FontWeight.w600,
                     ),
                     textAlign: TextAlign.justify,
@@ -129,7 +129,7 @@ Widget getProjectList(BuildContext context, int orientation) {
                   AutoSizeText(
                     'Stack',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 20,
                     ),
                   ),
                   SizedBox(height: 5),
@@ -251,12 +251,13 @@ Widget getTopicCardContainer(
           children: [
             Icon(
               icon,
+              size: 20,
               color: (onSelected[projectID] == true)
                   ? Theme.of(context).scaffoldBackgroundColor
                   : null,
             ),
             SizedBox(
-              width: 10,
+              width: 5,
             ),
             Text(
               topic,
@@ -268,7 +269,7 @@ Widget getTopicCardContainer(
                 color: (onSelected[projectID] == true)
                     ? Theme.of(context).scaffoldBackgroundColor
                     : null,
-                fontSize: 13,
+                fontSize: 20,
               ),
             ),
           ],

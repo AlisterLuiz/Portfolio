@@ -11,8 +11,8 @@ class TestimonialsPageLandscape extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  getTestimonialsImage(i),
-                  getTestimonialsData(context, i),
+                  getTestimonialsImage(context, i, 1),
+                  getTestimonialsData(context, i, 1),
                 ],
               ),
               SizedBox(height: 10),

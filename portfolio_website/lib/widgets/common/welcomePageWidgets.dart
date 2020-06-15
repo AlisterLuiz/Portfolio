@@ -42,9 +42,21 @@ Column getInfoLinks(BuildContext context, int pos) {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(FontAwesomeIcons.github),
-            Icon(FontAwesomeIcons.linkedinIn),
-            Icon(FontAwesomeIcons.instagram),
+            InkWell(
+                onTap: () {
+                  launchURL('https://github.com/AlisterLuiz');
+                },
+                child: Icon(FontAwesomeIcons.github)),
+            InkWell(
+                onTap: () {
+                  launchURL('https://www.linkedin.com/in/alisterluiz/');
+                },
+                child: Icon(FontAwesomeIcons.linkedinIn)),
+            InkWell(
+                onTap: () {
+                  launchURL('https://www.instagram.com/alister_luiz/');
+                },
+                child: Icon(FontAwesomeIcons.instagram)),
           ],
         ),
       ),
@@ -68,6 +80,7 @@ Container getButtons(BuildContext context, int width) {
           ),
           primaryButton(
               context,
+              1,
               FontAwesomeIcons.fileDownload,
               Theme.of(context).primaryColor,
               Theme.of(context).scaffoldBackgroundColor,
@@ -75,30 +88,37 @@ Container getButtons(BuildContext context, int width) {
               "Get my Resume!".toUpperCase(),
               null,
               'Resume'),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              primaryButton(
-                  context,
-                  Icons.android,
-                  Colors.green,
-                  Theme.of(context).primaryColor,
-                  190,
-                  "Available on Android!",
-                  110,
-                  'Android'),
-              SizedBox(width: 20),
-              primaryButton(
-                  context,
-                  FontAwesomeIcons.apple,
-                  Colors.black,
-                  Theme.of(context).primaryColor,
-                  190,
-                  "Available on iOS!",
-                  110,
-                  'iOS'),
-            ],
-          )
+          SizedBox(
+            height: 10,
+          ),
+          (UniversalPlatform.isAndroid || UniversalPlatform.isIOS)
+              ? Container()
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    primaryButton(
+                        context,
+                        2,
+                        Icons.android,
+                        Colors.green,
+                        Theme.of(context).primaryColor,
+                        190,
+                        "Available on Android!",
+                        110,
+                        'Android'),
+                    SizedBox(width: 20),
+                    primaryButton(
+                        context,
+                        3,
+                        FontAwesomeIcons.apple,
+                        Colors.black,
+                        Theme.of(context).primaryColor,
+                        190,
+                        "Available on iOS!",
+                        110,
+                        'iOS'),
+                  ],
+                )
         ],
       ),
     ),

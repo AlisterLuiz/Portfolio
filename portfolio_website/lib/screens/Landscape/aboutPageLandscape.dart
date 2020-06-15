@@ -12,6 +12,9 @@ class AboutPageLandscape extends StatelessWidget {
             getExperience(context, 0.35)
           ],
         ),
+        SizedBox(
+          height: 20,
+        ),
       ],
     );
   }

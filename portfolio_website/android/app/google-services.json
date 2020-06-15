@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "581155552102",
+    "firebase_url": "https://portfolio-c64dd.firebaseio.com",
+    "project_id": "portfolio-c64dd",
+    "storage_bucket": "portfolio-c64dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581155552102:android:5466be5de63057bc3066a7",
+        "android_client_info": {
+          "package_name": "com.example.portfolio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "581155552102-28k5leinvnq9b5lg2kk943j22ta12bq4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoCiUh1LlzZqG7FVEuWa6pJB8jC49oIpU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "581155552102-28k5leinvnq9b5lg2kk943j22ta12bq4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

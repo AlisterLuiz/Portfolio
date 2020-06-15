@@ -1,4 +1,5 @@
 import 'package:device_preview/device_preview.dart';
+
 import 'package:portfolio_website/utilities/index.dart';
 
 void main() {
@@ -26,7 +27,13 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<CurrentProjectIDProvider>(
           create: (context) => CurrentProjectIDProvider(),
-        )
+        ),
+        ChangeNotifierProvider<PDFProvider>(
+          create: (context) => PDFProvider(),
+        ),
+        StreamProvider<List<Projects>>.value(
+          value: getProjects() ,
+        ),
       ],
       child: MaterialApp(
         builder: DevicePreview.appBuilder,
@@ -34,6 +41,7 @@ class MyApp extends StatelessWidget {
         theme: Provider.of<ThemeModel>(context).currentTheme,
         initialRoute: Routes.homeView,
         routes: Routes.routes,
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

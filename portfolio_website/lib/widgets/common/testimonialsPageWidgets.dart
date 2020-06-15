@@ -1,6 +1,6 @@
 import 'package:portfolio_website/utilities/index.dart';
 
-Column getTestimonialsData(BuildContext context, i) {
+Column getTestimonialsData(BuildContext context, i, int orientation) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -14,31 +14,37 @@ Column getTestimonialsData(BuildContext context, i) {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Container(
-            width: screenWidth(context) * 0.4,
-            child: Text(
-              testimonials[i][1],
-              maxLines: 10,
-              textAlign: TextAlign.justify,
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
+          (orientation == 1)
+              ? Container(
+                  width: screenWidth(context) * 0.4,
+                  child: getTestimonial(i, orientation),
+                )
+              : getTestimonial(i, orientation),
           SizedBox(height: 30),
-          Text(testimonials[i][2]),
-          Text(testimonials[i][3]),
+          AutoSizeText(testimonials[i][2]),
+          AutoSizeText(testimonials[i][3]),
         ],
       ),
     ],
   );
 }
 
-Image getTestimonialsImage(i) {
+AutoSizeText getTestimonial(i, int orientation) {
+  return AutoSizeText(
+    testimonials[i][1],
+    maxLines: (orientation == 1) ? 10 : 5,
+    textAlign: TextAlign.justify,
+    style: TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.w400,
+    ),
+  );
+}
+
+Image getTestimonialsImage(BuildContext context, i, int orientation) {
   return Image.network(
     testimonials[i][0],
-    height: 400,
-    width: 350,
+    height: (orientation == 1) ? 400 : screenHeight(context) * 0.4,
+    width: (orientation == 1) ? 350 : screenWidth(context) * 0.6,
   );
 }

@@ -24,8 +24,10 @@ class _NavBarPortraitState extends State<NavBarPortrait> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: screenWidth(context) * 0.1,
+          padding: EdgeInsets.only(
+            left: screenWidth(context) * 0.1,
+            right: screenWidth(context) * 0.1,
+            top: screenHeight(context) * 0.05,
           ),
           child: _children[_currentIndex.getIndex()]),
       bottomNavigationBar: BottomNavigationBar(

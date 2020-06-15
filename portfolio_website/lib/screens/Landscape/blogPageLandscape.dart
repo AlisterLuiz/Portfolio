@@ -39,12 +39,12 @@ class _BlogPageLandscapeState extends State<BlogPageLandscape> {
         ),
         SizedBox(height: 20),
         FittedBox(
-          fit: BoxFit.fitHeight,
+          // fit: BoxFit.fitHeight,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
-                width: screenWidth(context) * 0.25,
+                width: screenWidth(context) * 0.15,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
@@ -68,14 +68,12 @@ class _BlogPageLandscapeState extends State<BlogPageLandscape> {
                   ],
                 ),
               ),
-              SizedBox(width: 20),
-              Container(
-                width: screenWidth(context) * 0.6,
-                child: getBlogsCarousel(context, _controller, 1),
-              ),
+              SizedBox(width: 30),
+              getBlogsCarousel(context, _controller, 1),
             ],
           ),
         ),
+        SizedBox(height: 20),
       ],
     );
   }

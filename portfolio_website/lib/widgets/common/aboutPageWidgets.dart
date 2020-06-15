@@ -95,6 +95,7 @@ Container getContactCard(BuildContext context, double width) {
               ),
               primaryButton(
                   context,
+                  4,
                   Icons.mail,
                   Theme.of(context).primaryColor,
                   Theme.of(context).scaffoldBackgroundColor,
@@ -184,6 +185,7 @@ Container getContactCard(BuildContext context, double width) {
               ),
               primaryButton(
                   context,
+                  5,
                   Icons.send,
                   Theme.of(context).primaryColor,
                   Theme.of(context).scaffoldBackgroundColor,
