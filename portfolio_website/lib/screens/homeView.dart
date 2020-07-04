@@ -3,7 +3,6 @@ import 'package:portfolio_website/utilities/index.dart';
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print(Provider.of<List<Projects>>(context, listen: false)[0].category);
     return BaseWidget<HomeViewModel>(
       viewModel: HomeViewModel(),
       onModelReady: (model) => model.initialise(),

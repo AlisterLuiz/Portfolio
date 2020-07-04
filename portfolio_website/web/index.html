@@ -30,17 +30,34 @@
       });
     }
   </script>
-  <script src="main.dart.js" type="application/javascript"></script>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="/__/firebase/7.14.6/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
 
   <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="/__/firebase/7.14.6/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
 
-  <!-- Initialize Firebase -->
-  <script src="/__/firebase/init.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBHcG1nTGoJYyA9ip-HhkSalTNvIw-zxEk",
+      authDomain: "portfolio-c64dd.firebaseapp.com",
+      databaseURL: "https://portfolio-c64dd.firebaseio.com",
+      projectId: "portfolio-c64dd",
+      storageBucket: "portfolio-c64dd.appspot.com",
+      messagingSenderId: "581155552102",
+      appId: "1:581155552102:web:8023ad81ab13f79a3066a7",
+      measurementId: "G-FQQ72HQP53"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var storage = firebase.storage();
+    firebase.analytics();
+  </script>
+  <script src="main.dart.js" type="application/javascript"></script>
+
 </body>
 
 </html>

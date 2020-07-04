@@ -9,7 +9,6 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
   Widget getTopicCard(
       BuildContext context, IconData icon, String topic, int projectID) {
     final currentID = Provider.of<CurrentProjectIDProvider>(context);
-
     return InkWell(
       onTap: () {
         setState(() {
@@ -32,6 +31,7 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
 
   Widget build(BuildContext context) {
     final currentID = Provider.of<CurrentProjectIDProvider>(context);
+    final projects = Provider.of<Map<String, List<Projects>>>(context);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -44,8 +44,8 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                   'Mobile App Development', 1),
               getTopicCard(context, Icons.laptop_chromebook,
                   'Full Stack Development', 2),
-              getTopicCard(context, Icons.graphic_eq,
-                  'Machine Learning Projects', 3),
+              getTopicCard(
+                  context, Icons.graphic_eq, 'Machine Learning Projects', 3),
               getTopicCard(context, FontAwesomeIcons.userGraduate,
                   'Academic Projects', 4),
             ],
@@ -53,7 +53,7 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
         ),
         Container(
           width: screenWidth(context) * 0.6,
-          child: displayProjects(context, currentID.getIndex(),
+          child: displayProjects(context, projects, currentID.getIndex(),
               currentProject[currentID.getIndex()], 1),
         ),
       ],

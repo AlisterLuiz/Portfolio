@@ -8,7 +8,7 @@ void main() {
     ChangeNotifierProvider<ThemeModel>(
       create: (BuildContext context) => ThemeModel(),
       child: DevicePreview(
-        enabled: true,
+        enabled: false,
         builder: (context) => MyApp(),
       ),
     ),
@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<PDFProvider>(
           create: (context) => PDFProvider(),
         ),
-        StreamProvider<List<Projects>>.value(
-          value: getProjects() ,
+        FutureProvider<Map<String, List<Projects>>>.value(
+          value: getProjects(),
         ),
       ],
       child: MaterialApp(

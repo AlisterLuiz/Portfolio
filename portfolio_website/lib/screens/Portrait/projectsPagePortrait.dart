@@ -7,6 +7,8 @@ class ProjectsPagePortrait extends StatefulWidget {
 
 class _ProjectsPagePortraitState extends State<ProjectsPagePortrait> {
   Widget build(BuildContext context) {
+    final projects = Provider.of<Map<String, List<Projects>>>(context);
+
     return DefaultTabController(
       length: 4,
       child: ListView(
@@ -25,10 +27,10 @@ class _ProjectsPagePortraitState extends State<ProjectsPagePortrait> {
           Container(
             height: screenHeight(context),
             child: TabBarView(children: [
-              displayProjects(context, 1, currentProject[1], 2),
-              displayProjects(context, 2, currentProject[2], 2),
-              displayProjects(context, 3, currentProject[3], 2),
-              displayProjects(context, 4, currentProject[4], 2),
+              displayProjects(context, projects, 1, currentProject[1], 2),
+              displayProjects(context, projects, 2, currentProject[2], 2),
+              displayProjects(context, projects, 3, currentProject[3], 2),
+              displayProjects(context, projects, 4, currentProject[4], 2),
             ]),
           ),
         ],

@@ -20,7 +20,6 @@ class _NavBarLandscapeState extends State<NavBarLandscape> {
 
   Widget build(BuildContext context) {
     final _currentIndex = Provider.of<CurrentPageProvider>(context);
-
     return SafeArea(
       child: DefaultTabController(
         length: 5,

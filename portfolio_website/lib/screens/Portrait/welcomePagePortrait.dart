@@ -8,7 +8,6 @@ class WelcomePagePortrait extends StatefulWidget {
 
 class _WelcomePagePortraitState extends State<WelcomePagePortrait> {
   @override
-  @override
   void initState() {
     super.initState();
     getPDF();

@@ -7,6 +7,13 @@ Map currentProject = {
   4: 'Academic Projects',
 };
 
+Map currentProjectList = {
+  1: 'Mobile',
+  2: 'Full Stack',
+  3: 'ML',
+  4: 'Academic',
+};
+
 Map onSelected = {
   1: false,
   2: false,
@@ -14,7 +21,23 @@ Map onSelected = {
   4: false,
 };
 
-Widget getTechStack(BuildContext context, int orientation) {
+Widget getMapper(Projects project, String map) {
+  Map linkMapper = {
+    "LinkedIn": getLink(
+        project, FontAwesomeIcons.linkedinIn, Color(0xff0072b1), 'LinkedIn'),
+    "GitHub":
+        getLink(project, FontAwesomeIcons.github, Color(0xff211F1F), 'GitHub'),
+    "Website":
+        getLink(project, FontAwesomeIcons.globe, Color(0xffFF0000), 'Website'),
+    "Paper":
+        getLink(project, FontAwesomeIcons.scroll, Color(0xff00ccbb), 'Paper'),
+    "Slides": getLink(
+        project, FontAwesomeIcons.filePowerpoint, Color(0xfff5b912), 'Slides'),
+  };
+  return linkMapper[map];
+}
+
+Widget getTechStack(BuildContext context, String stackName, int orientation) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: (orientation == 1) ? 5 : 10),
     child: Center(
@@ -26,7 +49,7 @@ Widget getTechStack(BuildContext context, int orientation) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AutoSizeText(
-              "Flutter",
+              stackName,
               style: TextStyle(
                 fontFamily: 'Montserrat',
                 fontSize: 18,
@@ -42,12 +65,12 @@ Widget getTechStack(BuildContext context, int orientation) {
   );
 }
 
-Widget getLink(BuildContext context, IconData icon, String text, int type) {
+Widget getLink(Projects project, IconData icon, Color color, String text) {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 10),
     child: RaisedButton(
-      textColor: Theme.of(context).primaryColor,
-      color: (type == 1) ? Color(0xff0072b1) : Color(0xff211F1F),
+      textColor: Colors.white,
+      color: color,
       elevation: 4,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -71,24 +94,26 @@ Widget getLink(BuildContext context, IconData icon, String text, int type) {
           ),
         ],
       ),
-      onPressed: () {},
+      onPressed: () {
+        launchURL(project.links[text]);
+      },
     ),
   );
 }
 
-Widget getLinks(BuildContext context) {
+Widget getLinks(BuildContext context, Projects project) {
   return Container(
     child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        getLink(context, FontAwesomeIcons.linkedinIn, 'LinkedIn', 1),
-        getLink(context, FontAwesomeIcons.github, 'GitHub', 2),
+        for (int i = 0; i < project.links.length; i++)
+          getMapper(project, project.links.keys.toList()[i])
       ],
     ),
   );
 }
 
-Widget getProjectList(BuildContext context, int orientation) {
+Widget getProjectList(BuildContext context, Projects project, int orientation) {
   return Container(
     decoration: BoxDecoration(
       border: Border.all(
@@ -100,11 +125,23 @@ Widget getProjectList(BuildContext context, int orientation) {
       color: Theme.of(context).scaffoldBackgroundColor,
       child: Column(
         children: [
-          Image.network(
-            blogs[0][0],
-            fit: BoxFit.fill,
-            height: screenHeight(context) * 0.33,
-            width: screenWidth(context),
+          CarouselSlider(
+            items: getElementsLength(project.images.length).map((i) {
+              return Image.network(
+                project.images[i],
+                fit: BoxFit.fill,
+                height: screenHeight(context) * 0.33,
+                width: screenWidth(context),
+              );
+            }).toList(),
+            options: CarouselOptions(
+              autoPlay: true,
+              enableInfiniteScroll: false,
+              autoPlayAnimationDuration: Duration(seconds: 3),
+
+              viewportFraction: 1,
+              // height: screenHeight(context) * 0.33,
+            ),
           ),
           SizedBox(height: screenHeight(context) * 0.02),
           Container(
@@ -117,7 +154,7 @@ Widget getProjectList(BuildContext context, int orientation) {
                     : MainAxisAlignment.start,
                 children: [
                   AutoSizeText(
-                    'Project Name',
+                    project.projectName,
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.w600,
@@ -126,25 +163,53 @@ Widget getProjectList(BuildContext context, int orientation) {
                     maxLines: 2,
                   ),
                   SizedBox(height: 5),
-                  AutoSizeText(
-                    'Stack',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
+                  (project.stack != null)
+                      ? AutoSizeText(
+                          'Stack',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        )
+                      : Container(),
                   SizedBox(height: 5),
-                  Row(
-                    children: [
-                      getTechStack(context, orientation),
-                      getTechStack(context, orientation),
-                      getTechStack(context, orientation)
-                    ],
-                  ),
+                  (project.stack != null)
+                      ? (project.stack.length > 3)
+                          ? Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    for (int i = 0; i < 3; i++)
+                                      getTechStack(context, project.stack[i],
+                                          orientation),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    for (int i = 3;
+                                        i < project.stack.length;
+                                        i++)
+                                      getTechStack(context, project.stack[i],
+                                          orientation),
+                                  ],
+                                ),
+                              ],
+                            )
+                          : Row(
+                              children: [
+                                for (int i = 0; i < project.stack.length; i++)
+                                  getTechStack(
+                                      context, project.stack[i], orientation),
+                              ],
+                            )
+                      : Container(),
                   SizedBox(height: 5),
-                  getLinks(context),
                 ],
               ),
             ),
+          ),
+          FittedBox(
+            fit: BoxFit.fitWidth,
+            child: getLinks(context, project),
           ),
         ],
       ),
@@ -152,10 +217,11 @@ Widget getProjectList(BuildContext context, int orientation) {
   );
 }
 
-Widget displayProjects(
-    BuildContext context, int projectID, String projectName, int orientation) {
+Widget displayProjects(BuildContext context, Map projects, int projectID,
+    String projectName, int orientation) {
   CarouselController _controller = CarouselController();
-
+  List<Projects> currentProject = projects[currentProjectList[projectID]];
+  print(currentProject);
   return (projectID == 0)
       ? Container()
       : Column(
@@ -211,13 +277,15 @@ Widget displayProjects(
                   )
                 : Container(),
             CarouselSlider(
-              items: getElementsLength(blogs.length).map((i) {
+              items: getElementsLength(currentProject.length).map((i) {
                 return InkWell(
                   onTap: () {},
-                  child: getProjectList(context, orientation),
+                  child:
+                      getProjectList(context, currentProject[i], orientation),
                 );
               }).toList(),
               options: CarouselOptions(
+                enableInfiniteScroll: false,
                 enlargeCenterPage: true,
                 viewportFraction: (orientation == 1) ? 0.4 : 0.8,
                 height: screenHeight(context) * 0.55,
