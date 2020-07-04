@@ -53,7 +53,6 @@ Container primaryButton(
                   "https://firebasestorage.googleapis.com/v0/b/portfolio-c64dd.appspot.com/o/Resume.pdf?alt=media&token=c55a7f5e-2676-42cb-8bca-71120f43850a")
               : LaunchFile.launchPDF(context, "Resume",
                   pdfProvider.getPathPDF(), pdfProvider.getPDFUrl());
-          print("URL" + pdfProvider.getPDFUrl());
         }
       },
     ),

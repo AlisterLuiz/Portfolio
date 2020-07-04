@@ -1,10 +1,11 @@
 import 'package:portfolio_website/utilities/index.dart';
 
 final Firestore _db = Firestore.instance;
-var ref = _db.collection('Projects');
+var refProjects = _db.collection('Projects');
+var refTestimonials = _db.collection('Testimonials');
 
 Future<Map<String, List<Projects>>> getProjects() async {
-  var querySnap = await ref.getDocuments();
+  var querySnap = await refProjects.getDocuments();
   Map<String, List<Projects>> projectMap = {};
 
   List data = querySnap.documents.map((snap) => snap.data).toList();
@@ -21,4 +22,22 @@ Future<Map<String, List<Projects>>> getProjects() async {
     );
   }
   return projectMap;
+}
+
+Future<List<Testimonials>> getTestimonials() async {
+  var querySnap = await refTestimonials.getDocuments();
+  List<Testimonials> testimonialsList = [];
+
+  List data = querySnap.documents.map((snap) => snap.data).toList();
+  for (int i = 0; i < data.length; i++) {
+    testimonialsList.add(
+      Testimonials(
+        name: data[i]['Name'],
+        photo: data[i]['Photo'],
+        content: data[i]['Content'],
+        position: data[i]['Position'],
+      ),
+    );
+  }
+  return testimonialsList;
 }

@@ -20,7 +20,6 @@ class LaunchFile {
   static Future<dynamic> createFileFromPdfUrl(dynamic url) async {
     final filename =
         'Resume.pdf'; //I did it on purpose to avoid strange naming conflicts
-    print(filename);
     var request = await HttpClient().getUrl(Uri.parse(url));
     var response = await request.close();
     var bytes = await consolidateHttpClientResponseBytes(response);

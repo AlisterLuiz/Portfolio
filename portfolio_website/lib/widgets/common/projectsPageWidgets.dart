@@ -221,7 +221,6 @@ Widget displayProjects(BuildContext context, Map projects, int projectID,
     String projectName, int orientation) {
   CarouselController _controller = CarouselController();
   List<Projects> currentProject = projects[currentProjectList[projectID]];
-  print(currentProject);
   return (projectID == 0)
       ? Container()
       : Column(

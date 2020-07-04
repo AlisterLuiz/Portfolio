@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     initializeBlogsData();
-    initializeTestimonialsData();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<CurrentPageProvider>(
@@ -33,6 +32,9 @@ class MyApp extends StatelessWidget {
         ),
         FutureProvider<Map<String, List<Projects>>>.value(
           value: getProjects(),
+        ),
+        FutureProvider<List<Testimonials>>.value(
+          value: getTestimonials(),
         ),
       ],
       child: MaterialApp(
