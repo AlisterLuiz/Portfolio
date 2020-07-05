@@ -5,7 +5,7 @@ class TestimonialsPageLandscape extends StatelessWidget {
     final testimonials = Provider.of<List<Testimonials>>(context);
     return CarouselSlider(
       items: getElementsLength(testimonials.length).map((i) {
-        return SingleChildScrollView(
+        return Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

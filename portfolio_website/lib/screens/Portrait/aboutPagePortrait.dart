@@ -1,6 +1,11 @@
 import 'package:portfolio_website/utilities/index.dart';
 
-class AboutPagePortrait extends StatelessWidget {
+class AboutPagePortrait extends StatefulWidget {
+  @override
+  _AboutPagePortraitState createState() => _AboutPagePortraitState();
+}
+
+class _AboutPagePortraitState extends State<AboutPagePortrait> {
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -9,7 +14,7 @@ class AboutPagePortrait extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              getContactCard(context, 0.7),
+              getContactCard(context, 0.7, () => setState(() {})),
               SizedBox(
                 height: 30,
               ),

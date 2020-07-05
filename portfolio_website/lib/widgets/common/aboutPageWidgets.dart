@@ -1,5 +1,10 @@
 import 'package:portfolio_website/utilities/index.dart';
 
+String email = '';
+String name = '';
+String message = '';
+final _emailKey = GlobalKey<FormState>();
+final _nameKey = GlobalKey<FormState>();
 Container getExperience(BuildContext context, double width) {
   return Container(
     width: screenWidth(context) * width,
@@ -71,11 +76,13 @@ Container getExperience(BuildContext context, double width) {
   );
 }
 
-Container getContactCard(BuildContext context, double width) {
+Container getContactCard(
+    BuildContext context, double width, Function setState) {
   return Container(
     width: screenWidth(context) * width,
+    height: screenHeight(context) * 0.7,
     child: FittedBox(
-      fit: BoxFit.fitWidth,
+      fit: BoxFit.fitHeight,
       child: Container(
         decoration: BoxDecoration(
             border: Border.all(color: Theme.of(context).primaryColor),
@@ -95,14 +102,14 @@ Container getContactCard(BuildContext context, double width) {
               ),
               primaryButton(
                   context,
-                  4,
                   Icons.mail,
                   Theme.of(context).primaryColor,
                   Theme.of(context).scaffoldBackgroundColor,
                   300,
                   "alisterluiz@gmail.com",
-                  null,
-                  'Email'),
+                  null, () {
+                launchURL('mailto:alisterluiz@gmail.com');
+              }),
               SizedBox(
                 height: 10,
               ),
@@ -119,8 +126,22 @@ Container getContactCard(BuildContext context, double width) {
               Container(
                 width: 300,
                 height: 50,
-                child: TextField(
-                  onChanged: (value) {},
+                child: TextFormField(
+                  onChanged: (value) {
+                    email = value;
+                    print(email);
+                    setState();
+                  },
+                  key: _emailKey,
+                  validator: (value) {
+                    Pattern pattern =
+                        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                    RegExp regex = new RegExp(pattern);
+                    if (!regex.hasMatch(value))
+                      return 'Enter a Valid Email';
+                    else
+                      return null;
+                  },
                   textAlign: TextAlign.left,
                   cursorColor: Colors.white,
                   style: TextStyle(
@@ -142,8 +163,20 @@ Container getContactCard(BuildContext context, double width) {
               Container(
                 width: 300,
                 height: 50,
-                child: TextField(
-                  onChanged: (value) {},
+                child: TextFormField(
+                  onChanged: (value) {
+                    name = value;
+                    print(name);
+                    setState();
+                  },
+                  key: _nameKey,
+                  validator: (value) {
+                    if (value.length < 3 ||
+                        value.contains(new RegExp(r'[0-9]')))
+                      return 'Enter a Valid Name!';
+                    else
+                      return null;
+                  },
                   textAlign: TextAlign.left,
                   cursorColor: Colors.white,
                   style: TextStyle(
@@ -167,7 +200,11 @@ Container getContactCard(BuildContext context, double width) {
                 height: 80,
                 child: TextField(
                   maxLines: null,
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    message = value;
+                    print(message);
+                    setState();
+                  },
                   textAlign: TextAlign.left,
                   cursorColor: Colors.white,
                   style: TextStyle(
@@ -185,14 +222,15 @@ Container getContactCard(BuildContext context, double width) {
               ),
               primaryButton(
                   context,
-                  5,
                   Icons.send,
                   Theme.of(context).primaryColor,
                   Theme.of(context).scaffoldBackgroundColor,
                   300,
                   "Send",
-                  null,
-                  'Send'),
+                  null, () {
+                launchURL(
+                    'mailto:alisterluiz@gmail.com?subject=Message from $email($name)&body=$message');
+              }),
               SizedBox(
                 height: 10,
               ),

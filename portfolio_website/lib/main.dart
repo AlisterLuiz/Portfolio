@@ -5,22 +5,11 @@ import 'package:portfolio_website/utilities/index.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    ChangeNotifierProvider<ThemeModel>(
-      create: (BuildContext context) => ThemeModel(),
-      child: DevicePreview(
-        enabled: false,
-        builder: (context) => MyApp(),
-      ),
-    ),
-  );
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    initializeBlogsData();
-    return MultiProvider(
+    MultiProvider(
       providers: [
+        ChangeNotifierProvider<ThemeModel>(
+          create: (BuildContext context) => ThemeModel(),
+        ),
         ChangeNotifierProvider<CurrentPageProvider>(
           create: (context) => CurrentPageProvider(),
         ),
@@ -37,14 +26,25 @@ class MyApp extends StatelessWidget {
           value: getTestimonials(),
         ),
       ],
-      child: MaterialApp(
-        builder: DevicePreview.appBuilder,
-        title: 'Portfolio - Alister Luiz',
-        theme: Provider.of<ThemeModel>(context).currentTheme,
-        initialRoute: Routes.homeView,
-        routes: Routes.routes,
-        debugShowCheckedModeBanner: false,
+      child: DevicePreview(
+        enabled: false,
+        builder: (context) => MyApp(),
       ),
+    ),
+  );
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    initializeBlogsData();
+    return MaterialApp(
+      builder: DevicePreview.appBuilder,
+      title: 'Portfolio - Alister Luiz',
+      theme: Provider.of<ThemeModel>(context).currentTheme,
+      initialRoute: Routes.homeView,
+      routes: Routes.routes,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

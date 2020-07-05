@@ -1,4 +1,5 @@
 import 'package:portfolio_website/utilities/index.dart';
+import 'package:portfolio_website/utilities/pdf_viewer/launchPDF.dart';
 
 Image getProfilePicture(double height, double width) {
   return Image.asset('assets/images/profile.png', height: height, width: width);
@@ -80,14 +81,23 @@ Container getButtons(BuildContext context, int width) {
           ),
           primaryButton(
               context,
-              1,
               FontAwesomeIcons.fileDownload,
               Theme.of(context).primaryColor,
               Theme.of(context).scaffoldBackgroundColor,
               400,
               "Get my Resume!".toUpperCase(),
-              null,
-              'Resume'),
+              null, () {
+            final pdfProvider =
+                Provider.of<PDFProvider>(context, listen: false);
+            (UniversalPlatform.isWeb)
+                ? LaunchFile.launchPDF(
+                    context,
+                    "Resume",
+                    pdfProvider.getPathPDF(),
+                    "https://firebasestorage.googleapis.com/v0/b/portfolio-c64dd.appspot.com/o/Resume.pdf?alt=media&token=c55a7f5e-2676-42cb-8bca-71120f43850a")
+                : LaunchFile.launchPDF(context, "Resume",
+                    pdfProvider.getPathPDF(), pdfProvider.getPDFUrl());
+          }),
           SizedBox(
             height: 10,
           ),
@@ -98,25 +108,23 @@ Container getButtons(BuildContext context, int width) {
                   children: [
                     primaryButton(
                         context,
-                        2,
                         Icons.android,
                         Colors.green,
                         Theme.of(context).primaryColor,
                         190,
                         "Available on Android!",
                         110,
-                        'Android'),
+                        () {}),
                     SizedBox(width: 20),
                     primaryButton(
                         context,
-                        3,
                         FontAwesomeIcons.apple,
                         Colors.black,
                         Theme.of(context).primaryColor,
                         190,
                         "Available on iOS!",
                         110,
-                        'iOS'),
+                        () {}),
                   ],
                 )
         ],
