@@ -5,19 +5,22 @@ class TestimonialsPageLandscape extends StatelessWidget {
     final testimonials = Provider.of<List<Testimonials>>(context);
     return CarouselSlider(
       items: getElementsLength(testimonials.length).map((i) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                getTestimonialsImage(context, testimonials, i, 1),
-                SizedBox(width: 30),
-                getTestimonialsData(context, testimonials, i, 1),
-              ],
-            ),
-            SizedBox(height: 10),
-          ],
+        return SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  getTestimonialsImage(context, testimonials, i, 1),
+                  SizedBox(width: 30),
+                  getTestimonialsData(context, testimonials, i, 1),
+                ],
+              ),
+              SizedBox(height: 10),
+            ],
+          ),
         );
       }).toList(),
       options: CarouselOptions(
@@ -27,6 +30,7 @@ class TestimonialsPageLandscape extends StatelessWidget {
           seconds: 3,
         ),
         viewportFraction: 1,
+        // height: screenHeight(context) * 1.8,
       ),
     );
   }

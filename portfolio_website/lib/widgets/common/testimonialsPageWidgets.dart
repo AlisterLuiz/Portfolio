@@ -26,7 +26,7 @@ Column getTestimonialsData(
             testimonials[i].name,
             textAlign: TextAlign.right,
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 14,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -37,7 +37,7 @@ Column getTestimonialsData(
               maxLines: 2,
               textAlign: TextAlign.right,
               style: TextStyle(
-                fontSize: 15,
+                fontSize: 14,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -54,7 +54,7 @@ AutoSizeText getTestimonial(
     testimonials[i].content,
     textAlign: TextAlign.justify,
     style: TextStyle(
-      fontSize: 20,
+      fontSize: 18,
       fontWeight: FontWeight.w400,
     ),
   );
