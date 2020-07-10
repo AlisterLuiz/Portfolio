@@ -3,6 +3,8 @@ import 'package:portfolio_website/utilities/index.dart';
 final Firestore _db = Firestore.instance;
 var refProjects = _db.collection('Projects');
 var refTestimonials = _db.collection('Testimonials');
+var refBlogs = _db.collection('Blogs');
+
 
 Future<Map<String, List<Projects>>> getProjects() async {
   var querySnap = await refProjects.getDocuments();
@@ -40,4 +42,23 @@ Future<List<Testimonials>> getTestimonials() async {
     );
   }
   return testimonialsList;
+}
+
+Future<List<Blogs>> getBlogs() async {
+  var querySnap = await refBlogs.getDocuments();
+  List<Blogs> blogsList = [];
+
+  List data = querySnap.documents.map((snap) => snap.data).toList();
+  for (int i = 0; i < data.length; i++) {
+    blogsList.add(
+      Blogs(
+        title: data[i]['Title'],
+        photo: data[i]['Photo'],
+        link: data[i]['Link'],
+        date: data[i]['Date'],
+        source: data[i]['Source'],
+      ),
+    );
+  }
+  return blogsList;
 }

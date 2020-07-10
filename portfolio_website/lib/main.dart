@@ -25,6 +25,9 @@ void main() {
         FutureProvider<List<Testimonials>>.value(
           value: getTestimonials(),
         ),
+        FutureProvider<List<Blogs>>.value(
+          value: getBlogs(),
+        ),
       ],
       child: DevicePreview(
         enabled: false,
@@ -37,7 +40,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    initializeBlogsData();
     return MaterialApp(
       builder: DevicePreview.appBuilder,
       title: 'Portfolio - Alister Luiz',

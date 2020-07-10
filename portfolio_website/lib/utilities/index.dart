@@ -20,7 +20,7 @@ export 'package:firebase_storage/firebase_storage.dart';
 
 // Models
 export 'package:portfolio_website/models/testimonialsModel.dart';
-export 'package:portfolio_website/models/blogModel.dart';
+export 'package:portfolio_website/models/blogsModel.dart';
 export 'package:portfolio_website/models/themeModel.dart';
 export 'package:portfolio_website/models/homeViewModel.dart';
 export 'package:portfolio_website/models/projectModel.dart';

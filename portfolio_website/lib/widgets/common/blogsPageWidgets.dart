@@ -52,13 +52,15 @@ Widget getSearchFilterIcon(
 Widget getBlogsCarousel(
     BuildContext context, CarouselController _controller, int orientation) {
   final CarouselController _controller = CarouselController();
-
-  return Container(
-    width: screenWidth(context) * 0.6,
+  final List<Blogs> blogs = Provider.of<List<Blogs>>(context);
+  return Flexible(
+    flex: 2,
     child: CarouselSlider(
       items: getElementsLength(blogs.length).map((i) {
         return InkWell(
-          onTap: () {},
+          onTap: () {
+            launchURL(blogs[i].link);
+          },
           child: Container(
             decoration: BoxDecoration(
               border: Border.all(
@@ -72,7 +74,7 @@ Widget getBlogsCarousel(
               child: Column(
                 children: [
                   Image(
-                    image: NetworkImage(blogs[i][0]),
+                    image: NetworkImage(blogs[i].photo),
                     fit: BoxFit.fill,
                     height: screenHeight(context) * 0.34,
                     width: screenWidth(context),
@@ -82,13 +84,7 @@ Widget getBlogsCarousel(
                     padding: EdgeInsets.symmetric(
                       horizontal: screenWidth(context) * 0.02,
                     ),
-                    child: Container(
-                      child: (orientation == 1)
-                          ? FittedBox(
-                              child: getBlogDetails(i),
-                            )
-                          : getBlogDetails(i),
-                    ),
+                    child: Container(child: getBlogDetails(blogs[i])),
                   ),
                 ],
               ),
@@ -98,19 +94,20 @@ Widget getBlogsCarousel(
       }).toList(),
       options: CarouselOptions(
         enlargeCenterPage: true,
-        height: (orientation == 1) ? null : screenHeight(context) * 0.55,
+        height: screenHeight(context) * 0.55,
+        enableInfiniteScroll: false,
       ),
       carouselController: _controller,
     ),
   );
 }
 
-Column getBlogDetails(i) {
+Column getBlogDetails(Blogs blog) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.end,
     children: [
       AutoSizeText(
-        blogs[i][1],
+        blog.title,
         style: TextStyle(fontWeight: FontWeight.w700, fontSize: 17),
         maxLines: 2,
         minFontSize: 15,
@@ -122,11 +119,11 @@ Column getBlogDetails(i) {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           AutoSizeText(
-            blogs[i][2],
+            blog.date,
             maxFontSize: 14,
           ),
           AutoSizeText(
-            blogs[i][3],
+            blog.source,
             maxFontSize: 14,
           ),
         ],

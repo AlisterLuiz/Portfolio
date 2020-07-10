@@ -38,40 +38,36 @@ class _BlogPageLandscapeState extends State<BlogPageLandscape> {
           ],
         ),
         SizedBox(height: 20),
-        FittedBox(
-          // fit: BoxFit.fitHeight,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                width: screenWidth(context) * 0.15,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Flexible(
-                      child: InkWell(
-                        onTap: () {
-                          _controller.previousPage();
-                        },
-                        child: Icon(Icons.keyboard_arrow_left, size: 60),
-                      ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Flexible(
+              flex: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Flexible(
+                    child: InkWell(
+                      onTap: () {
+                        _controller.previousPage();
+                      },
+                      child: Icon(Icons.keyboard_arrow_left, size: 80),
                     ),
-                    SizedBox(width: 40),
-                    Flexible(
-                      child: InkWell(
-                        onTap: () {
-                          _controller.nextPage();
-                        },
-                        child: Icon(Icons.keyboard_arrow_right, size: 60),
-                      ),
+                  ),
+                  SizedBox(width: 40),
+                  Flexible(
+                    child: InkWell(
+                      onTap: () {
+                        _controller.nextPage();
+                      },
+                      child: Icon(Icons.keyboard_arrow_right, size: 80),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              SizedBox(width: 30),
-              getBlogsCarousel(context, _controller, 1),
-            ],
-          ),
+            ),
+            getBlogsCarousel(context, _controller, 1),
+          ],
         ),
         SizedBox(height: 20),
       ],
