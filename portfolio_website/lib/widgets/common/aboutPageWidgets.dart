@@ -80,9 +80,9 @@ Container getContactCard(
     BuildContext context, double width, Function setState) {
   return Container(
     width: screenWidth(context) * width,
-    height: screenHeight(context) * 0.7,
+    // height: screenHeight(context) * 0.7,
     child: FittedBox(
-      fit: BoxFit.fitHeight,
+      fit: BoxFit.fitWidth,
       child: Container(
         decoration: BoxDecoration(
             border: Border.all(color: Theme.of(context).primaryColor),

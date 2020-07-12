@@ -10,6 +10,8 @@ export 'package:path_provider/path_provider.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:universal_platform/universal_platform.dart';
 export 'package:cloud_firestore/cloud_firestore.dart';
+export 'package:responsive_grid/responsive_grid.dart';
+export 'package:flip_card/flip_card.dart';
 
 // PDF Support
 export 'package:flutter_full_pdf_viewer/flutter_full_pdf_viewer.dart';

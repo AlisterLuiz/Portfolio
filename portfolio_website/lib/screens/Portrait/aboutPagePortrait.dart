@@ -14,7 +14,7 @@ class _AboutPagePortraitState extends State<AboutPagePortrait> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              getContactCard(context, 0.7, () => setState(() {})),
+              getContactCard(context, 0.8, () => setState(() {})),
               SizedBox(
                 height: 30,
               ),

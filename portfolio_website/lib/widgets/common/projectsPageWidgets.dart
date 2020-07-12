@@ -38,28 +38,30 @@ Widget getMapper(Projects project, String map) {
 }
 
 Widget getTechStack(BuildContext context, String stackName, int orientation) {
-  return Padding(
-    padding: EdgeInsets.symmetric(horizontal: (orientation == 1) ? 5 : 10),
-    child: Center(
-      child: RaisedButton(
-        textColor: Color(0xff8240D8),
-        color: Theme.of(context).primaryColor,
-        elevation: 4,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AutoSizeText(
-              stackName,
-              style: TextStyle(
-                fontFamily: 'Montserrat',
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-                color: Theme.of(context).scaffoldBackgroundColor,
+  return Container(
+    child: Padding(
+      padding: EdgeInsets.symmetric(horizontal: (orientation == 1) ? 5 : 5),
+      child: Center(
+        child: RaisedButton(
+          textColor: Color(0xff8240D8),
+          color: Theme.of(context).primaryColor,
+          elevation: 4,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AutoSizeText(
+                stackName,
+                style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
+          onPressed: () {},
         ),
-        onPressed: () {},
       ),
     ),
   );
@@ -124,93 +126,90 @@ Widget getProjectList(BuildContext context, Projects project, int orientation) {
     child: Card(
       color: Theme.of(context).scaffoldBackgroundColor,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CarouselSlider(
             items: getElementsLength(project.images.length).map((i) {
               return Image.network(
                 project.images[i],
                 fit: BoxFit.fill,
-                height: screenHeight(context) * 0.33,
                 width: screenWidth(context),
               );
             }).toList(),
             options: CarouselOptions(
               autoPlay: true,
               enableInfiniteScroll: false,
-              autoPlayAnimationDuration: Duration(seconds: 3),
-
+              autoPlayAnimationDuration: Duration(seconds: 2),
               viewportFraction: 1,
-              // height: screenHeight(context) * 0.33,
+              height: screenHeight(context) * 0.27,
             ),
           ),
-          SizedBox(height: screenHeight(context) * 0.02),
           Container(
-            height: screenHeight(context) * 0.15,
-            child: FittedBox(
-              fit: BoxFit.fitHeight,
-              child: Column(
-                mainAxisAlignment: (orientation == 1)
-                    ? MainAxisAlignment.spaceEvenly
-                    : MainAxisAlignment.start,
-                children: [
-                  AutoSizeText(
-                    project.projectName,
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    textAlign: TextAlign.justify,
-                    maxLines: 2,
+            height: screenHeight(context) * 0.24,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AutoSizeText(
+                  project.projectName,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
                   ),
-                  SizedBox(height: 5),
-                  (project.stack != null)
-                      ? AutoSizeText(
-                          'Stack',
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        )
-                      : Container(),
-                  SizedBox(height: 5),
-                  (project.stack != null)
-                      ? (project.stack.length > 3)
-                          ? Column(
-                              children: [
-                                Row(
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                ),
+                Column(
+                  children: [
+                    AutoSizeText(
+                      'Stack',
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                    FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: (project.stack != null)
+                          ? (project.stack.length > 3)
+                              ? Column(
                                   children: [
-                                    for (int i = 0; i < 3; i++)
-                                      getTechStack(context, project.stack[i],
-                                          orientation),
+                                    Row(
+                                      children: [
+                                        for (int i = 0; i < 3; i++)
+                                          getTechStack(context,
+                                              project.stack[i], orientation),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        for (int i = 3;
+                                            i < project.stack.length;
+                                            i++)
+                                          getTechStack(context,
+                                              project.stack[i], orientation),
+                                      ],
+                                    ),
                                   ],
-                                ),
-                                Row(
+                                )
+                              : Row(
                                   children: [
-                                    for (int i = 3;
+                                    for (int i = 0;
                                         i < project.stack.length;
                                         i++)
                                       getTechStack(context, project.stack[i],
                                           orientation),
                                   ],
-                                ),
-                              ],
-                            )
-                          : Row(
-                              children: [
-                                for (int i = 0; i < project.stack.length; i++)
-                                  getTechStack(
-                                      context, project.stack[i], orientation),
-                              ],
-                            )
-                      : Container(),
-                  SizedBox(height: 5),
-                ],
-              ),
+                                )
+                          : Container(),
+                    ),
+                  ],
+                ),
+                FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: getLinks(context, project),
+                ),
+              ],
             ),
-          ),
-          FittedBox(
-            fit: BoxFit.fitWidth,
-            child: getLinks(context, project),
-          ),
+          )
         ],
       ),
     ),
@@ -277,17 +276,13 @@ Widget displayProjects(BuildContext context, Map projects, int projectID,
                 : Container(),
             CarouselSlider(
               items: getElementsLength(currentProject.length).map((i) {
-                return InkWell(
-                  onTap: () {},
-                  child:
-                      getProjectList(context, currentProject[i], orientation),
-                );
+                return getProjectList(context, currentProject[i], orientation);
               }).toList(),
               options: CarouselOptions(
                 enableInfiniteScroll: false,
                 enlargeCenterPage: true,
                 viewportFraction: (orientation == 1) ? 0.4 : 0.8,
-                height: screenHeight(context) * 0.55,
+                height: screenHeight(context) * 0.56,
               ),
               carouselController: _controller,
             ),
