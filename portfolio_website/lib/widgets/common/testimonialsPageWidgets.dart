@@ -52,7 +52,7 @@ AutoSizeText getTestimonial(
     List<Testimonials> testimonials, i, int orientation) {
   return AutoSizeText(
     testimonials[i].content,
-    textAlign: TextAlign.justify,
+    textAlign: TextAlign.left,
     style: TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.w400,

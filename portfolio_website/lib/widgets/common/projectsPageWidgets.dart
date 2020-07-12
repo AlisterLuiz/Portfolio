@@ -141,33 +141,39 @@ Widget getProjectList(BuildContext context, Projects project, int orientation) {
               enableInfiniteScroll: false,
               autoPlayAnimationDuration: Duration(seconds: 2),
               viewportFraction: 1,
-              height: screenHeight(context) * 0.27,
+              height: screenHeight(context) * 0.28,
             ),
           ),
-          Container(
-            height: screenHeight(context) * 0.24,
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: screenHeight(context) * 0.24,
+              minHeight: screenHeight(context) * 0.15,
+            ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                AutoSizeText(
-                  project.projectName,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
+                FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    project.projectName,
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
                   ),
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
                 ),
                 Column(
                   children: [
                     AutoSizeText(
                       'Stack',
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
+                      style: TextStyle(),
+                      minFontSize: 12,
+                      maxFontSize: 16,
                     ),
                     FittedBox(
-                      fit: BoxFit.fitWidth,
+                      fit: BoxFit.contain,
                       child: (project.stack != null)
                           ? (project.stack.length > 3)
                               ? Column(
@@ -204,7 +210,7 @@ Widget getProjectList(BuildContext context, Projects project, int orientation) {
                   ],
                 ),
                 FittedBox(
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.contain,
                   child: getLinks(context, project),
                 ),
               ],

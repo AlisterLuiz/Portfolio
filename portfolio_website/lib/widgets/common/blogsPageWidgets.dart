@@ -84,7 +84,9 @@ Widget getBlogsCarousel(
                     padding: EdgeInsets.symmetric(
                       horizontal: screenWidth(context) * 0.02,
                     ),
-                    child: Container(child: getBlogDetails(blogs[i])),
+                    child: Container(
+                      child: getBlogDetails(blogs[i]),
+                    ),
                   ),
                 ],
               ),
