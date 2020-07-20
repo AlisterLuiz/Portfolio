@@ -33,7 +33,7 @@ void main() {
         enabled: true,
         builder: (context) => MyApp(),
       ),
-    ),
+    )
   );
 }
 

@@ -32,6 +32,7 @@ class _NavBarLandscapeState extends State<NavBarLandscape> {
               top: screenHeight(context) * 0.1,
             ),
             child: ListView(
+              shrinkWrap: true,
               children: [
                 FittedBox(
                   fit: BoxFit.fitWidth,

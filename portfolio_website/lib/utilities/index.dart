@@ -12,6 +12,7 @@ export 'package:universal_platform/universal_platform.dart';
 export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:responsive_grid/responsive_grid.dart';
 export 'package:flip_card/flip_card.dart';
+export 'package:getwidget/getwidget.dart';
 
 // PDF Support
 export 'package:flutter_full_pdf_viewer/flutter_full_pdf_viewer.dart';
