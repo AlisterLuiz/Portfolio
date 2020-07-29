@@ -8,13 +8,6 @@
 //   4: 'Academic Projects',
 // };
 
-// Map currentProjectList = {
-//   1: 'Mobile',
-//   2: 'Full Stack',
-//   3: 'ML',
-//   4: 'Academic',
-// };
-
 // Map onSelected = {
 //   1: false,
 //   2: false,
@@ -400,12 +393,21 @@ List categories = [
     'Academic'
   ],
 ];
+
 Map onSelected = {
   1: false,
   2: false,
   3: false,
   4: false,
 };
+
+Map currentProjectList = {
+  1: 'Mobile',
+  2: 'Full Stack',
+  3: 'ML',
+  4: 'Academic',
+};
+
 Widget getProjectCategories(
     BuildContext context, int orientation, Function setState) {
   final currentID = Provider.of<CurrentProjectIDProvider>(context);

@@ -6,61 +6,67 @@ class ProjectsPageLandscape extends StatefulWidget {
 }
 
 class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
-  // Widget getTopicCard(
-  //     BuildContext context, IconData icon, String topic, int projectID) {
-  //   return InkWell(
-  //     onTap: () {
-  //       setState(() {
-  //         currentID.setIndex(projectID);
-  //         onSelected[projectID] = true;
-  //         for (int i = 0; i < onSelected.length; i++)
-  //           if (i != projectID) onSelected[i] = false;
-  //       });
-  //     },
-  //     child: getTopicCardContainer(context, icon, topic, projectID),
-  //   );
-  // }
-
   Widget build(BuildContext context) {
     final currentProjectID = Provider.of<CurrentProjectIDProvider>(context);
     final projects = Provider.of<Map<String, List<Projects>>>(context);
-
+    List<Projects> project =
+        projects[currentProjectList[currentProjectID.getIndex()]];
+    int count = 0;
     return (currentProjectID.getIndex() == 0)
         ? getProjectCategories(
             context,
             1,
             () => setState(() {}),
           )
-        : Text('Hello');
-
-    // return Row(
-    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //   children: [
-    //     Flexible(
-    //       flex: 1,
-    //       child: Container(
-    //         height: screenHeight(context) * 0.7,
-    //         child: Column(
-    //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //           children: [
-    //             getTopicCard(context, FontAwesomeIcons.mobileAlt,
-    //                 'Mobile Apps', 1),
-    //             getTopicCard(context, Icons.laptop_chromebook,
-    //                 'Full Stack', 2),
-    //             getTopicCard(
-    //                 context, Icons.graphic_eq, 'Machine Learning', 3),
-    //             getTopicCard(context, FontAwesomeIcons.userGraduate,
-    //                 'Academic', 4),
-    //           ],
-    //         ),
-    //       ),
-    //     ),
-    //     Flexible(
-    //       flex: 2,
-    //       child: displayProjects(context, projects, currentID.getIndex(),
-    //           currentProject[currentID.getIndex()], 1),
-    //     ),
-    //   ],
-    // );
+        : Container(
+            height: screenHeight(context) * 0.7,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Container(
+                    height: screenHeight(context) * 0.6,
+                    child: PageView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: (project.length / 4).ceil(),
+                      itemBuilder: (context, i) {
+                        return GridView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: 4,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: screenWidth(context) *
+                                1.2 /
+                                screenHeight(context) *
+                                1.2,
+                          ),
+                          itemBuilder: (context, index) {
+                            count = 4 * i;
+                            index = count + index;
+                            return (index < project.length)
+                                ? Container(
+                                    margin: EdgeInsets.all(4),
+                                    color: Theme.of(context).accentColor,
+                                    child: Text(project[index].projectName),
+                                  )
+                                : Container();
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                ),
+                Container(
+                  height: screenHeight(context) * 0.1,
+                  child: IconButton(
+                    onPressed: () => currentProjectID.setIndex(0),
+                    icon: Icon(Icons.arrow_back),
+                  ),
+                ),
+              ],
+            ),
+          );
   }
 }
