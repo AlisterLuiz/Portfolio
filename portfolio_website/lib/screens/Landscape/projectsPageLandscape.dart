@@ -6,6 +6,15 @@ class ProjectsPageLandscape extends StatefulWidget {
 }
 
 class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
+  PageController controller = PageController();
+  int currentPage = 0;
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     final currentProjectID = Provider.of<CurrentProjectIDProvider>(context);
     final projects = Provider.of<Map<String, List<Projects>>>(context);
@@ -14,6 +23,7 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
     int count = 0;
     ScreenUtil.init(context, allowFontScaling: true);
     ScreenUtil().setSp(24, allowFontScalingSelf: true);
+
     return (currentProjectID.getIndex() == 0)
         ? getProjectCategories(
             context,
@@ -29,7 +39,9 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                   child: Container(
                     height: screenHeight(context) * 0.6,
                     child: PageView.builder(
+                      physics: NeverScrollableScrollPhysics(),
                       scrollDirection: Axis.horizontal,
+                      controller: controller,
                       itemCount: (project.length / 3).ceil(),
                       itemBuilder: (context, i) {
                         return GridView.builder(
@@ -126,9 +138,101 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                 ),
                 Container(
                   height: screenHeight(context) * 0.1,
-                  child: IconButton(
-                    onPressed: () => currentProjectID.setIndex(0),
-                    icon: Icon(Icons.arrow_back),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                currentPage = 0;
+                              });
+                              currentProjectID.setIndex(0);
+                            },
+                            icon: Icon(
+                              Icons.arrow_back,
+                              size: ScreenUtil().setSp(
+                                24,
+                                allowFontScalingSelf: true,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            currentProject[currentProjectID.getIndex()],
+                            style: TextStyle(
+                              fontSize: ScreenUtil().setSp(
+                                24,
+                                allowFontScalingSelf: true,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          (currentPage != 0)
+                              ? IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      (currentPage > 0)
+                                          ? currentPage -= 1
+                                          : currentPage = 0;
+                                      controller.animateToPage(
+                                        currentPage,
+                                        duration: Duration(milliseconds: 500),
+                                        curve: Curves.easeInOut,
+                                      );
+                                    });
+                                  },
+                                  icon: Icon(
+                                    Icons.chevron_left,
+                                    size: ScreenUtil().setSp(
+                                      24,
+                                      allowFontScalingSelf: true,
+                                    ),
+                                  ),
+                                )
+                              : Container(),
+                          SizedBox(width: 5),
+                          Text(
+                            'Page ${currentPage + 1} of ${(project.length / 3).ceil()}',
+                            style: TextStyle(
+                              fontSize: ScreenUtil().setSp(
+                                24,
+                                allowFontScalingSelf: true,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          (currentPage != (project.length / 3).ceil() - 1)
+                              ? IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      (currentPage <
+                                              (project.length / 3).ceil() - 1)
+                                          ? currentPage += 1
+                                          : currentPage =
+                                              (project.length / 3).ceil() - 1;
+                                      controller.animateToPage(
+                                        currentPage,
+                                        duration: Duration(milliseconds: 500),
+                                        curve: Curves.easeInOut,
+                                      );
+                                    });
+                                  },
+                                  icon: Icon(
+                                    Icons.chevron_right,
+                                    size: ScreenUtil().setSp(
+                                      24,
+                                      allowFontScalingSelf: true,
+                                    ),
+                                  ),
+                                )
+                              : Container(),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ],

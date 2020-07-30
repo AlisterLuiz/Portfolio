@@ -1,13 +1,6 @@
 // import 'package:portfolio_website/utilities/index.dart';
 // import 'package:portfolio_website/widgets/mouseHover.dart';
 
-// Map currentProject = {
-//   1: 'Mobile App Development',
-//   2: 'Full Stack Development',
-//   3: 'Machine Learning Projects',
-//   4: 'Academic Projects',
-// };
-
 // Map onSelected = {
 //   1: false,
 //   2: false,
@@ -113,13 +106,13 @@
 // }
 
 // Widget getProjectList(BuildContext context, Projects project, int orientation) {
-  // return Container(
-    // decoration: BoxDecoration(
-    //   border: Border.all(
-    //     width: 2,
-    //     color: Theme.of(context).primaryColor,
-    //   ),
-    // ),
+// return Container(
+// decoration: BoxDecoration(
+//   border: Border.all(
+//     width: 2,
+//     color: Theme.of(context).primaryColor,
+//   ),
+// ),
 //     child: Column(
 //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //       children: [
@@ -127,22 +120,22 @@
 //           direction: FlipDirection.HORIZONTAL,
 //           front: Column(
 //             children: [
-              // CarouselSlider(
-              //   items: getElementsLength(project.images.length).map((i) {
-              //     return Image.network(
-              //       project.images[i],
-              //       fit: BoxFit.fill,
-              //       width: screenWidth(context),
-              //     );
-              //   }).toList(),
-              //   options: CarouselOptions(
-              //     autoPlay: true,
-              //     enableInfiniteScroll: false,
-              //     autoPlayAnimationDuration: Duration(seconds: 2),
-              //     viewportFraction: 1,
-              //     height: 100,
-              //   ),
-              // ),
+// CarouselSlider(
+//   items: getElementsLength(project.images.length).map((i) {
+//     return Image.network(
+//       project.images[i],
+//       fit: BoxFit.fill,
+//       width: screenWidth(context),
+//     );
+//   }).toList(),
+//   options: CarouselOptions(
+//     autoPlay: true,
+//     enableInfiniteScroll: false,
+//     autoPlayAnimationDuration: Duration(seconds: 2),
+//     viewportFraction: 1,
+//     height: 100,
+//   ),
+// ),
 //               FittedBox(
 //                 fit: BoxFit.contain,
 //                 child: Padding(
@@ -256,10 +249,10 @@
 //                     child: Row(
 //                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //                       children: [
-//                         Text(
-//                           projectName,
-//                           style: TextStyle(fontSize: 30),
-//                         ),
+// Text(
+//   projectName,
+//   style: TextStyle(fontSize: 30),
+// ),
 //                         Row(
 //                           children: [
 //                             InkWell(
@@ -406,6 +399,13 @@ Map currentProjectList = {
   2: 'Full Stack',
   3: 'ML',
   4: 'Academic',
+};
+
+Map currentProject = {
+  1: 'Mobile App Development',
+  2: 'Full Stack Development',
+  3: 'Machine Learning Projects',
+  4: 'Academic Projects',
 };
 
 Widget getProjectCategories(
