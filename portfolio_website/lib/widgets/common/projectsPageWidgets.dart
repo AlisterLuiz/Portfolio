@@ -113,13 +113,13 @@
 // }
 
 // Widget getProjectList(BuildContext context, Projects project, int orientation) {
-//   return Container(
-//     decoration: BoxDecoration(
-//       border: Border.all(
-//         width: 2,
-//         color: Theme.of(context).primaryColor,
-//       ),
-//     ),
+  // return Container(
+    // decoration: BoxDecoration(
+    //   border: Border.all(
+    //     width: 2,
+    //     color: Theme.of(context).primaryColor,
+    //   ),
+    // ),
 //     child: Column(
 //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //       children: [
@@ -127,22 +127,22 @@
 //           direction: FlipDirection.HORIZONTAL,
 //           front: Column(
 //             children: [
-//               CarouselSlider(
-//                 items: getElementsLength(project.images.length).map((i) {
-//                   return Image.network(
-//                     project.images[i],
-//                     fit: BoxFit.fill,
-//                     width: screenWidth(context),
-//                   );
-//                 }).toList(),
-//                 options: CarouselOptions(
-//                   autoPlay: true,
-//                   enableInfiniteScroll: false,
-//                   autoPlayAnimationDuration: Duration(seconds: 2),
-//                   viewportFraction: 1,
-//                   height: 100,
-//                 ),
-//               ),
+              // CarouselSlider(
+              //   items: getElementsLength(project.images.length).map((i) {
+              //     return Image.network(
+              //       project.images[i],
+              //       fit: BoxFit.fill,
+              //       width: screenWidth(context),
+              //     );
+              //   }).toList(),
+              //   options: CarouselOptions(
+              //     autoPlay: true,
+              //     enableInfiniteScroll: false,
+              //     autoPlayAnimationDuration: Duration(seconds: 2),
+              //     viewportFraction: 1,
+              //     height: 100,
+              //   ),
+              // ),
 //               FittedBox(
 //                 fit: BoxFit.contain,
 //                 child: Padding(
