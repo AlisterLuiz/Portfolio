@@ -24,37 +24,6 @@
 //   return linkMapper[map];
 // }
 
-// Widget getTechStack(BuildContext context, String stackName, int orientation) {
-//   return Container(
-//     height: 30,
-//     child: Padding(
-//       padding: EdgeInsets.symmetric(horizontal: 5),
-//       child: Center(
-//         child: RaisedButton(
-//           textColor: Color(0xff8240D8),
-//           color: Theme.of(context).primaryColor,
-//           elevation: 4,
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               AutoSizeText(
-//                 stackName,
-//                 style: TextStyle(
-//                   fontFamily: 'Montserrat',
-//                   fontSize: 18,
-//                   fontWeight: FontWeight.w600,
-//                   color: Theme.of(context).scaffoldBackgroundColor,
-//                 ),
-//               ),
-//             ],
-//           ),
-//           onPressed: () {},
-//         ),
-//       ),
-//     ),
-//   );
-// }
-
 // Widget getLink(BuildContext context, Projects project, IconData icon,
 //     Color color, String text) {
 //   return Container(
@@ -471,5 +440,95 @@ Widget getProjectCategories(
         },
       );
     },
+  );
+}
+
+Widget getTechStack(BuildContext context, String stackName) {
+  return Card(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(1.0),
+    ),
+    color: Theme.of(context).primaryColor,
+    elevation: 4,
+    child: FittedBox(
+      child: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: AutoSizeText(
+          stackName,
+          style: TextStyle(
+            fontSize: ScreenUtil().setSp(
+              14,
+              allowFontScalingSelf: true,
+            ),
+            fontWeight: FontWeight.w600,
+            color: Theme.of(context).scaffoldBackgroundColor,
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget getMapper(BuildContext context, Projects project, String map) {
+  Map linkMapper = {
+    "LinkedIn": getLink(context, project, FontAwesomeIcons.linkedinIn,
+        Color(0xff0072b1), 'LinkedIn'),
+    "GitHub": getLink(
+        context, project, FontAwesomeIcons.github, Color(0xff211F1F), 'GitHub'),
+    "Website": getLink(
+        context, project, FontAwesomeIcons.globe, Color(0xffFF0000), 'Website'),
+    "Paper": getLink(
+        context, project, FontAwesomeIcons.scroll, Color(0xff00ccbb), 'Paper'),
+    "Slides": getLink(context, project, FontAwesomeIcons.filePowerpoint,
+        Color(0xfff5b912), 'Slides'),
+  };
+  return linkMapper[map];
+}
+
+Widget getLink(BuildContext context, Projects project, IconData icon,
+    Color color, String text) {
+  return InkWell(
+    onTap: () {
+      launchURL(project.links[text]);
+    },
+    child: Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(1.0),
+      ),
+      color: color,
+      elevation: 4,
+      child: FittedBox(
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                // // color: Theme.of(context).primaryColor,
+                size: ScreenUtil().setSp(
+                  18,
+                  allowFontScalingSelf: true,
+                ),
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              Text(
+                text,
+                style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontSize: ScreenUtil().setSp(
+                    18,
+                    allowFontScalingSelf: true,
+                  ),
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
   );
 }

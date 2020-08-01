@@ -1,3 +1,4 @@
+import 'package:portfolio_website/screens/Landscape/projectDescPageLandscape.dart';
 import 'package:portfolio_website/utilities/index.dart';
 
 class ProjectsPageLandscape extends StatefulWidget {
@@ -22,7 +23,7 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
         projects[currentProjectList[currentProjectID.getIndex()]];
     int count = 0;
     ScreenUtil.init(context, allowFontScaling: true);
-    ScreenUtil().setSp(24, allowFontScalingSelf: true);
+    ScreenUtil().setSp(30, allowFontScalingSelf: true);
 
     return (currentProjectID.getIndex() == 0)
         ? getProjectCategories(
@@ -68,64 +69,76 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                                         : EdgeInsets.only(
                                             bottom: screenHeight(context) * 0.2,
                                           ),
-                                    child: Container(
-                                      height: screenHeight(context) * 0.5,
-                                      margin: EdgeInsets.all(4),
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          width: 2,
-                                          color: Theme.of(context).primaryColor,
+                                    child: InkWell(
+                                      onTap: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              ProjectDescriptionLandscape(
+                                                  project: project[index]),
                                         ),
                                       ),
-                                      child: Column(
-                                        children: [
-                                          Expanded(
-                                            flex: 2,
-                                            child: CarouselSlider(
-                                              items: getElementsLength(
-                                                project[index].images.length,
-                                              ).map((i) {
-                                                return Image.network(
-                                                  project[index].images[i],
-                                                  fit: BoxFit.fill,
-                                                  width: screenWidth(context),
-                                                );
-                                              }).toList(),
-                                              options: CarouselOptions(
-                                                autoPlay: true,
-                                                enableInfiniteScroll: false,
-                                                autoPlayAnimationDuration:
-                                                    Duration(seconds: 2),
-                                                viewportFraction: 1,
-                                                height: screenHeight(context) *
-                                                    0.26,
+                                      child: Container(
+                                        height: screenHeight(context) * 0.5,
+                                        margin: EdgeInsets.all(4),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            width: 2,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          ),
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Expanded(
+                                              flex: 2,
+                                              child: CarouselSlider(
+                                                items: getElementsLength(
+                                                  project[index].images.length,
+                                                ).map((i) {
+                                                  return Image.network(
+                                                    project[index].images[i],
+                                                    fit: BoxFit.fill,
+                                                    width: screenWidth(context),
+                                                  );
+                                                }).toList(),
+                                                options: CarouselOptions(
+                                                  autoPlay: true,
+                                                  enableInfiniteScroll: false,
+                                                  autoPlayAnimationDuration:
+                                                      Duration(seconds: 2),
+                                                  viewportFraction: 1,
+                                                  height:
+                                                      screenHeight(context) *
+                                                          0.26,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Expanded(
-                                            child: FittedBox(
-                                              child: Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                  horizontal:
-                                                      screenWidth(context) *
-                                                          0.01,
-                                                ),
-                                                child: AutoSizeText(
-                                                  project[index].projectName,
-                                                  maxLines: 1,
-                                                  style: TextStyle(
-                                                    fontSize:
-                                                        ScreenUtil().setSp(
-                                                      24,
-                                                      allowFontScalingSelf:
-                                                          true,
+                                            Expanded(
+                                              child: FittedBox(
+                                                child: Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        screenWidth(context) *
+                                                            0.01,
+                                                  ),
+                                                  child: AutoSizeText(
+                                                    project[index].projectName,
+                                                    maxLines: 1,
+                                                    style: TextStyle(
+                                                      fontSize:
+                                                          ScreenUtil().setSp(
+                                                        30,
+                                                        allowFontScalingSelf:
+                                                            true,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   )
@@ -153,7 +166,7 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                             icon: Icon(
                               Icons.arrow_back,
                               size: ScreenUtil().setSp(
-                                24,
+                                30,
                                 allowFontScalingSelf: true,
                               ),
                             ),
@@ -162,7 +175,7 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                             currentProject[currentProjectID.getIndex()],
                             style: TextStyle(
                               fontSize: ScreenUtil().setSp(
-                                24,
+                                30,
                                 allowFontScalingSelf: true,
                               ),
                             ),
@@ -172,8 +185,8 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                       Row(
                         children: [
                           (currentPage != 0)
-                              ? IconButton(
-                                  onPressed: () {
+                              ? GestureDetector(
+                                  onTap: () {
                                     setState(() {
                                       (currentPage > 0)
                                           ? currentPage -= 1
@@ -185,10 +198,10 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                                       );
                                     });
                                   },
-                                  icon: Icon(
+                                  child: Icon(
                                     Icons.chevron_left,
                                     size: ScreenUtil().setSp(
-                                      24,
+                                      30,
                                       allowFontScalingSelf: true,
                                     ),
                                   ),
@@ -199,7 +212,7 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                             'Page ${currentPage + 1} of ${(project.length / 3).ceil()}',
                             style: TextStyle(
                               fontSize: ScreenUtil().setSp(
-                                24,
+                                30,
                                 allowFontScalingSelf: true,
                               ),
                             ),
@@ -224,7 +237,7 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                                   icon: Icon(
                                     Icons.chevron_right,
                                     size: ScreenUtil().setSp(
-                                      24,
+                                      30,
                                       allowFontScalingSelf: true,
                                     ),
                                   ),

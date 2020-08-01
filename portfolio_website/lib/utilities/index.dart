@@ -15,6 +15,8 @@ export 'package:flip_card/flip_card.dart';
 export 'package:getwidget/getwidget.dart';
 export 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
+export 'package:infinity_page_view/infinity_page_view.dart';
+export 'dart:async';
 
 // PDF Support
 export 'package:flutter_full_pdf_viewer/flutter_full_pdf_viewer.dart';
