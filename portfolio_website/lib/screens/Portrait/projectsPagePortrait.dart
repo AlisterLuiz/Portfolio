@@ -1,3 +1,4 @@
+import 'package:portfolio_website/screens/Portrait/projectDescPagePortrait.dart';
 import 'package:portfolio_website/utilities/index.dart';
 
 class ProjectsPagePortrait extends StatefulWidget {
@@ -62,61 +63,74 @@ class _ProjectsPagePortraitState extends State<ProjectsPagePortrait> {
                   itemCount: (project.length * 2),
                   itemBuilder: (BuildContext context, int index) {
                     if (index.isEven && index != 0) count++;
+                    int i = count;
                     print(project.length);
                     return (index.isOdd)
                         ? Container()
-                        : Container(
-                            margin: EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                width: 2,
-                                color: Theme.of(context).primaryColor,
+                        : InkWell(
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    ProjectDescriptionPortrait(
+                                  project: project[i],
+                                ),
                               ),
                             ),
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  flex: 3,
-                                  child: CarouselSlider(
-                                    items: getElementsLength(
-                                      project[count].images.length,
-                                    ).map((i) {
-                                      return Image.network(
-                                        project[count].images[i],
-                                        fit: BoxFit.fill,
-                                        width: screenWidth(context),
-                                      );
-                                    }).toList(),
-                                    options: CarouselOptions(
-                                      autoPlay: true,
-                                      enableInfiniteScroll: false,
-                                      autoPlayAnimationDuration:
-                                          Duration(seconds: 2),
-                                      viewportFraction: 1,
-                                      height: screenHeight(context) * 0.26,
+                            child: Container(
+                              margin: EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 2,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                              ),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    flex: 3,
+                                    child: CarouselSlider(
+                                      items: getElementsLength(
+                                        project[count].images.length,
+                                      ).map((i) {
+                                        return Image.network(
+                                          project[count].images[i],
+                                          fit: BoxFit.fill,
+                                          width: screenWidth(context),
+                                        );
+                                      }).toList(),
+                                      options: CarouselOptions(
+                                        autoPlay: true,
+                                        enableInfiniteScroll: false,
+                                        autoPlayAnimationDuration:
+                                            Duration(seconds: 2),
+                                        viewportFraction: 1,
+                                        height: screenHeight(context) * 0.26,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Expanded(
-                                  child: FittedBox(
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: screenWidth(context) * 0.01,
-                                      ),
-                                      child: AutoSizeText(
-                                        project[count].projectName,
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                          fontSize: ScreenUtil().setSp(
-                                            30,
-                                            allowFontScalingSelf: true,
+                                  Expanded(
+                                    child: FittedBox(
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal:
+                                              screenWidth(context) * 0.01,
+                                        ),
+                                        child: AutoSizeText(
+                                          project[count].projectName,
+                                          maxLines: 1,
+                                          style: TextStyle(
+                                            fontSize: ScreenUtil().setSp(
+                                              30,
+                                              allowFontScalingSelf: true,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           );
                   },

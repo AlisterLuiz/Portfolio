@@ -16,9 +16,9 @@ class _AboutPageLandscapeState extends State<AboutPageLandscape> {
             getExperience(context, 0.35)
           ],
         ),
-        // SizedBox(
-        //   height: 20,
-        // ),
+        SizedBox(
+          height: 20,
+        ),
       ],
     );
   }

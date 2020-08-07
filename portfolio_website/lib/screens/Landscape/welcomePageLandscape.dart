@@ -45,8 +45,11 @@ class _WelcomePageLandscapeState extends State<WelcomePageLandscape> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            width: screenWidth(context) * 0.28,
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: screenWidth(context) * 0.26,
+              minWidth: screenWidth(context) * 0.25,
+            ),
             child: FittedBox(
               fit: BoxFit.fitWidth,
               child: Column(

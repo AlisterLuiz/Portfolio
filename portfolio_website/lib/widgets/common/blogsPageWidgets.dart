@@ -53,7 +53,9 @@ Widget getBlogsCarousel(
     BuildContext context, CarouselController _controller, int orientation) {
   final CarouselController _controller = CarouselController();
   final List<Blogs> blogs = Provider.of<List<Blogs>>(context);
-  return Flexible(
+  ScreenUtil.init(context, allowFontScaling: true);
+  ScreenUtil().setSp(30, allowFontScalingSelf: true);
+  return Expanded(
     flex: 2,
     child: CarouselSlider(
       items: getElementsLength(blogs.length).map((i) {
@@ -62,6 +64,7 @@ Widget getBlogsCarousel(
             launchURL(blogs[i].link);
           },
           child: Container(
+            // height: screenHeight(context) * 0.6,
             decoration: BoxDecoration(
               border: Border.all(
                 color: Theme.of(context).primaryColor,
@@ -72,21 +75,25 @@ Widget getBlogsCarousel(
               semanticContainer: true,
               clipBehavior: Clip.antiAliasWithSaveLayer,
               child: Column(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image(
-                    image: NetworkImage(blogs[i].photo),
-                    fit: BoxFit.fill,
-                    height: screenHeight(context) * 0.34,
-                    width: screenWidth(context),
+                  Expanded(
+                    flex: 2,
+                    child: Image(
+                      image: NetworkImage(blogs[i].photo),
+                      fit: BoxFit.fill,
+                      // height: screenHeight(context) * 0.34,
+                      width: screenWidth(context),
+                    ),
                   ),
-                  SizedBox(height: 15),
+                  SizedBox(
+                    height: screenHeight(context) * 0.02,
+                  ),
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: screenWidth(context) * 0.02,
                     ),
-                    child: Container(
-                      child: getBlogDetails(blogs[i]),
-                    ),
+                    child: getBlogDetails(blogs[i]),
                   ),
                 ],
               ),
@@ -96,8 +103,8 @@ Widget getBlogsCarousel(
       }).toList(),
       options: CarouselOptions(
         enlargeCenterPage: true,
-        height: screenHeight(context) * 0.55,
         enableInfiniteScroll: false,
+        height: screenHeight(context) * 0.55,
       ),
       carouselController: _controller,
     ),
@@ -110,9 +117,16 @@ Column getBlogDetails(Blogs blog) {
     children: [
       AutoSizeText(
         blog.title,
-        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 17),
+        style: TextStyle(
+          fontWeight: FontWeight.w700,
+          fontSize: ScreenUtil().setSp(
+            30,
+            allowFontScalingSelf: true,
+          ),
+        ),
         maxLines: 2,
-        minFontSize: 15,
+        // minFontSize: 8,
+        // maxFontSize: 30,
       ),
       SizedBox(
         height: 10,
@@ -122,11 +136,21 @@ Column getBlogDetails(Blogs blog) {
         children: [
           AutoSizeText(
             blog.date,
-            maxFontSize: 14,
+            style: TextStyle(
+              fontSize: ScreenUtil().setSp(
+                14,
+                allowFontScalingSelf: true,
+              ),
+            ),
           ),
           AutoSizeText(
             blog.source,
-            maxFontSize: 14,
+            style: TextStyle(
+              fontSize: ScreenUtil().setSp(
+                14,
+                allowFontScalingSelf: true,
+              ),
+            ),
           ),
         ],
       ),

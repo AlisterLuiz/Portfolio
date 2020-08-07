@@ -67,7 +67,7 @@ Column getInfoLinks(BuildContext context, int pos) {
 
 Container getButtons(BuildContext context, int width) {
   return Container(
-    width: (width == 1) ? screenWidth(context) * 0.32 : null,
+    width: (width == 1) ? screenWidth(context) * 0.30 : null,
     child: FittedBox(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

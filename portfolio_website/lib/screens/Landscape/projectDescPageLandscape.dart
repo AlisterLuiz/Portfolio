@@ -33,7 +33,7 @@ class ProjectDescriptionLandscape extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          height: screenHeight(context) * 0.3,
+                          height: screenHeight(context) * 0.35,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,

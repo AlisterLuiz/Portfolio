@@ -39,9 +39,8 @@ class _BlogPageLandscapeState extends State<BlogPageLandscape> {
         ),
         SizedBox(height: 20),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Flexible(
+            Expanded(
               flex: 1,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -69,7 +68,7 @@ class _BlogPageLandscapeState extends State<BlogPageLandscape> {
             getBlogsCarousel(context, _controller, 1),
           ],
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 10),
       ],
     );
   }
