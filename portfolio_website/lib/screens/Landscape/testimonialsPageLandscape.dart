@@ -28,7 +28,7 @@ class TestimonialsPageLandscape extends StatelessWidget {
           seconds: 4,
         ),
         viewportFraction: 1,
-        // height: screenHeight(context) * 1.8,
+        height: screenHeight(context) * 0.7,
       ),
     );
   }

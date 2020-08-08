@@ -104,7 +104,7 @@ Widget getBlogsCarousel(
       options: CarouselOptions(
         enlargeCenterPage: true,
         enableInfiniteScroll: false,
-        height: screenHeight(context) * 0.55,
+        height: screenHeight(context) * 0.5,
       ),
       carouselController: _controller,
     ),

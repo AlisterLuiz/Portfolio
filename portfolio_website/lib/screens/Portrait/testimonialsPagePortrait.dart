@@ -15,13 +15,9 @@ class TestimonialsPagePortrait extends StatelessWidget {
           return ListView(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(
-                  flex: 2,
-                  child: getTestimonialsImage(context, testimonials, i, 2)),
+              getTestimonialsImage(context, testimonials, i, 2),
               SizedBox(height: 20),
-              Expanded(
-                child: getTestimonialsData(context, testimonials, i, 2),
-              ),
+              getTestimonialsData(context, testimonials, i, 2),
             ],
           );
         },
@@ -33,7 +29,7 @@ class TestimonialsPagePortrait extends StatelessWidget {
           seconds: 4,
         ),
         viewportFraction: 1,
-        height: screenHeight(context) * 1.1,
+        height: screenHeight(context),
       ),
     );
   }
