@@ -131,7 +131,7 @@ class ProjectDescriptionLandscape extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: Text(
-                      'Anim occaecat mollit et occaecat ipsum occaecat consectetur sint fugiat in veniam sint. Sint occaecat aute in ex qui ex ut ullamco.',
+                      project.text,
                       style: TextStyle(
                         fontSize: ScreenUtil().setSp(
                           24,

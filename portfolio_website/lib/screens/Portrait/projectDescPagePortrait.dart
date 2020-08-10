@@ -100,7 +100,7 @@ class ProjectDescriptionPortrait extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   Text(
-                    'Anim occaecat mollit et occaecat ipsum occaecat consectetur sint fugiat in veniam sint. Sint occaecat aute in ex qui ex ut ullamco.',
+                    project.text,
                     style: TextStyle(
                       fontSize: ScreenUtil().setSp(
                         40,

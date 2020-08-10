@@ -26,32 +26,34 @@ class _BlogPagePortraitState extends State<BlogPagePortrait> {
               SizedBox(
                 height: 20,
               ),
-              Container(
-                width: screenWidth(context) * 0.8,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          widgetType = (!widgetType);
-                        });
-                      },
-                      child: getSearchFilterIcon(context, widgetType, 2),
-                    ),
-                    SizedBox(width: 30),
-                    Icon(
-                      FontAwesomeIcons.filter,
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
+              // Container(
+              //   width: screenWidth(context) * 0.8,
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       InkWell(
+              //         onTap: () {
+              //           setState(() {
+              //             widgetType = (!widgetType);
+              //           });
+              //         },
+              //         child: getSearchFilterIcon(context, widgetType, 2),
+              //       ),
+              //       SizedBox(width: 30),
+              //       Icon(
+              //         FontAwesomeIcons.filter,
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 20,
+              // ),
+            
             ],
           ),
         ),
+        SizedBox(height: 10),
         getBlogsCarousel(context, _controller, 2),
         SizedBox(height: 10),
       ],

@@ -6,6 +6,7 @@ class Projects {
   final List images;
   final List stack;
   final Map links;
+  final String text;
 
   Projects({
     @required this.category,
@@ -13,5 +14,6 @@ class Projects {
     @required this.images,
     @required this.stack,
     @required this.links,
+    @required this.text,
   });
 }

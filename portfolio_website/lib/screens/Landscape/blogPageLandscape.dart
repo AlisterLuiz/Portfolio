@@ -21,20 +21,21 @@ class _BlogPageLandscapeState extends State<BlogPageLandscape> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             getTitle(),
-            Row(children: [
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    widgetType = (!widgetType);
-                  });
-                },
-                child: getSearchFilterIcon(context, widgetType, 1),
-              ),
-              SizedBox(width: 30),
-              Icon(
-                FontAwesomeIcons.filter,
-              )
-            ])
+            // Row(children: [
+            //   InkWell(
+            //     onTap: () {
+            //       setState(() {
+            //         widgetType = (!widgetType);
+            //       });
+            //     },
+            //     child: getSearchFilterIcon(context, widgetType, 1),
+            //   ),
+            //   SizedBox(width: 30),
+            //   Icon(
+            //     FontAwesomeIcons.filter,
+            //   )
+            // ])
+          
           ],
         ),
         SizedBox(height: 20),

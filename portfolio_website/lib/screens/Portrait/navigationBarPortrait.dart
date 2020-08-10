@@ -78,9 +78,12 @@ class _NavBarPortraitState extends State<NavBarPortrait> {
               Icons.record_voice_over,
               semanticLabel: 'Testimonials Page',
             ),
-            title: Text(
-              'Testimonials',
-              style: kNavigationBarTextStyle,
+            title: FittedBox(
+              fit: BoxFit.fitWidth,
+              child: Text(
+                'Testimonials',
+                style: kNavigationBarTextStyle,
+              ),
             ),
           ),
           BottomNavigationBarItem(

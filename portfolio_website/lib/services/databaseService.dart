@@ -5,7 +5,6 @@ var refProjects = _db.collection('Projects');
 var refTestimonials = _db.collection('Testimonials');
 var refBlogs = _db.collection('Blogs');
 
-
 Future<Map<String, List<Projects>>> getProjects() async {
   var querySnap = await refProjects.getDocuments();
   Map<String, List<Projects>> projectMap = {};
@@ -16,11 +15,13 @@ Future<Map<String, List<Projects>>> getProjects() async {
       projectMap[data[i]['Category']] = [];
     projectMap[data[i]['Category']].add(
       Projects(
-          category: data[i]['Category'],
-          projectName: data[i]['ProjectName'],
-          images: data[i]['Images'],
-          stack: data[i]['Stack'],
-          links: data[i]['Links']),
+        category: data[i]['Category'],
+        projectName: data[i]['ProjectName'],
+        images: data[i]['Images'],
+        stack: data[i]['Stack'],
+        links: data[i]['Links'],
+        text: data[i]['Text'],
+      ),
     );
   }
   return projectMap;
