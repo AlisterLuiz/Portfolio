@@ -8,6 +8,13 @@ class WelcomeScreenAnimation {
             curve: Interval(0, 0.3, curve: Curves.easeIn),
           ),
         ),
+        imagePosition =
+            Tween<Offset>(begin: Offset(0, 0), end: Offset(255, 0)).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(0.0, 0.4, curve: Curves.easeIn),
+          ),
+        ),
         containerWidth = Tween<double>(begin: 0, end: 60).animate(
           CurvedAnimation(
             parent: controller,
@@ -59,6 +66,7 @@ class WelcomeScreenAnimation {
 
   final AnimationController controller;
   final Animation<double> imageOpacity;
+  final Animation<Offset> imagePosition;
   final Animation<double> containerWidth;
   final Animation<double> icon1Opacity;
   final Animation<double> icon2Opacity;

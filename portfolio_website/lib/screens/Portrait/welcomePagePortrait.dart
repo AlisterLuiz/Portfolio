@@ -58,12 +58,15 @@ class _WelcomePagePortraitState extends State<WelcomePagePortrait>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding: EdgeInsets.all(20),
-                    decoration: new BoxDecoration(
-                      color: Theme.of(context).primaryColor,
+                  Opacity(
+                    opacity: animation.imageOpacity.value,
+                    child: Container(
+                      padding: EdgeInsets.all(20),
+                      decoration: new BoxDecoration(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      child: getProfilePicture(null, null),
                     ),
-                    child: getProfilePicture(null, null),
                   ),
                   SizedBox(
                     height: 30,

@@ -18,7 +18,7 @@ Widget getName() {
       ),
       totalRepeatCount: 1,
       speed: Duration(
-        milliseconds: 600,
+        milliseconds: 300,
       ),
       textAlign: TextAlign.start,
       alignment: AlignmentDirectional.topStart // or Alignment.topLeft

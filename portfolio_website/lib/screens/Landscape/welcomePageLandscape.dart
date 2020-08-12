@@ -78,10 +78,8 @@ class _WelcomePageLandscapeState extends State<WelcomePageLandscape>
                       overflow: Overflow.visible,
                       children: [
                         Positioned(
-                          left: 235,
-                          child: Opacity(
-                              opacity: animation.imageOpacity.value,
-                              child: getProfilePicture(450, 450)),
+                          left: animation.imagePosition.value.dx,
+                          child: getProfilePicture(450, 450),
                         ),
                         Container(
                           height: 250,
