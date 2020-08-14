@@ -3,26 +3,10 @@ import 'package:portfolio_website/utilities/index.dart';
 import 'package:portfolio_website/widgets/parallaxCard.dart';
 
 List categories = [
-  [
-    'https://www.handycats.com/wp-content/uploads/2017/09/iPhone-Application-Development-Background-HD.png',
-    FontAwesomeIcons.mobileAlt,
-    'Mobile Apps'
-  ],
-  [
-    'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
-    Icons.laptop_chromebook,
-    'Full Stack'
-  ],
-  [
-    'https://wallpaperaccess.com/full/1426870.png',
-    Icons.graphic_eq,
-    'Machine Learning'
-  ],
-  [
-    'https://images6.alphacoders.com/480/thumb-1920-480421.jpg',
-    FontAwesomeIcons.userGraduate,
-    'Academic'
-  ],
+  ['assets/images/mobileApp.png', FontAwesomeIcons.mobileAlt, 'Mobile Apps'],
+  ['assets/images/fullStack.jpg', Icons.laptop_chromebook, 'Full Stack'],
+  ['assets/images/ML.png', Icons.graphic_eq, 'Machine Learning'],
+  ['assets/images/academic.jpg', FontAwesomeIcons.userGraduate, 'Academic'],
 ];
 
 Map onSelected = {

@@ -119,7 +119,7 @@ class _ParallaxCardState extends State<ParallaxCard>
                       transform: Matrix4.identity()..scale(scaleX, scaleY),
                       child: Opacity(
                         opacity: 0.8,
-                        child: Image.network(
+                        child: Image.asset(
                           widget.image,
                           height: screenHeight(context) * 0.4,
                           width: (widget.orientation == 1)

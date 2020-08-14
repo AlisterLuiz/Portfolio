@@ -29,7 +29,7 @@ void main() {
         ),
       ],
       child: DevicePreview(
-        enabled: true,
+        enabled: false,
         builder: (context) => MyApp(),
       ),
     ),
