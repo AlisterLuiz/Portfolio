@@ -329,6 +329,7 @@
 
 import 'dart:math';
 
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:portfolio_website/utilities/index.dart';
 import 'package:portfolio_website/widgets/parallaxCard.dart';
@@ -379,65 +380,101 @@ Map currentProject = {
 
 Widget getProjectCategories(
     BuildContext context, int orientation, Function setState) {
-  final currentID = Provider.of<CurrentProjectIDProvider>(context);
   final currentProjectID = Provider.of<CurrentProjectIDProvider>(context);
   bool hover = false;
-  double localX = 0;
-  double localY = 0;
-  bool defaultPosition = true;
-  double percentageX = (localX / (screenSize(context).width - 40)) * 100;
-  double percentageY = (localY / 230) * 100;
+  List<List<double>> positionLandscape = [
+    [-250, -250],
+    [250, -250],
+    [-250, 250],
+    [250, 250]
+  ];
+  List<List<double>> positionPortrait = [
+    [-800, 0],
+    [800, 0],
+    [-800, 0],
+    [800, 0]
+  ];
   return LayoutBuilder(
     builder: (context, constraint) {
-      return GridView.builder(
-        shrinkWrap: true,
-        itemCount: 4,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: (orientation == 1) ? 2 : 1,
-          childAspectRatio: (orientation == 1)
-              ? screenWidth(context) * 1.1 / screenHeight(context) * 1.1
-              : screenWidth(context) * 2 / screenHeight(context) * 2,
-        ),
-        itemBuilder: (context, index) {
-          return (UniversalPlatform.isWeb)
-              ? ParallaxCard(
-                  image: categories[index][0],
-                  icon: categories[index][1],
-                  text: categories[index][2],
-                  orientation: orientation,
-                  currentID: currentProjectID,
-                  index: index,
-                )
-              : GestureDetector(
-                  onTap: () {
-                    currentProjectID.setIndex(index + 1);
-                  },
-                  child: GFCard(
-                    elevation: (hover == true) ? 5 : 1,
-                    boxFit: BoxFit.cover,
-                    imageOverlay: NetworkImage(categories[index][0]),
-                    title: GFListTile(
-                      icon: FittedBox(child: Icon(categories[index][1])),
-                      title: FittedBox(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            AutoSizeText(
-                              categories[index][2],
+      return AnimationLimiter(
+        child: GridView.builder(
+          shrinkWrap: true,
+          itemCount: 4,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: (orientation == 1) ? 2 : 1,
+            childAspectRatio: (orientation == 1)
+                ? screenWidth(context) * 1.1 / screenHeight(context) * 1.1
+                : screenWidth(context) * 2 / screenHeight(context) * 2,
+          ),
+          itemBuilder: (context, index) {
+            return (UniversalPlatform.isWeb)
+                ? AnimationConfiguration.staggeredGrid(
+                    position: index,
+                    duration: Duration(milliseconds: 800),
+                    delay: Duration(milliseconds: 300),
+                    columnCount: 4,
+                    child: SlideAnimation(
+                      horizontalOffset: (orientation == 1)
+                          ? positionLandscape[index][0]
+                          : positionPortrait[index][0],
+                      verticalOffset: (orientation == 1)
+                          ? positionLandscape[index][1]
+                          : positionPortrait[index][1],
+                      child: ParallaxCard(
+                        image: categories[index][0],
+                        icon: categories[index][1],
+                        text: categories[index][2],
+                        orientation: orientation,
+                        currentID: currentProjectID,
+                        index: index,
+                      ),
+                    ),
+                  )
+                : AnimationConfiguration.staggeredGrid(
+                    position: index,
+                    duration: Duration(milliseconds: 800),
+                    delay: Duration(milliseconds: 300),
+                    columnCount: 4,
+                    child: SlideAnimation(
+                      horizontalOffset: (orientation == 1)
+                          ? positionLandscape[index][0]
+                          : positionPortrait[index][0],
+                      verticalOffset: (orientation == 1)
+                          ? positionLandscape[index][1]
+                          : positionPortrait[index][1],
+                      child: GestureDetector(
+                        onTap: () {
+                          currentProjectID.setIndex(index + 1);
+                        },
+                        child: GFCard(
+                          elevation: (hover == true) ? 5 : 1,
+                          boxFit: BoxFit.cover,
+                          imageOverlay: NetworkImage(categories[index][0]),
+                          title: GFListTile(
+                            icon: FittedBox(child: Icon(categories[index][1])),
+                            title: FittedBox(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  AutoSizeText(
+                                    categories[index][2],
+                                  ),
+                                  SizedBox(height: 2),
+                                  Container(
+                                    height: 5,
+                                    width: 30,
+                                    color: Theme.of(context).accentColor,
+                                  ),
+                                ],
+                              ),
                             ),
-                            SizedBox(height: 2),
-                            Container(
-                              height: 5,
-                              width: 30,
-                              color: Theme.of(context).accentColor,
-                            ),
-                          ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                );
-        },
+                  );
+          },
+        ),
       );
     },
   );

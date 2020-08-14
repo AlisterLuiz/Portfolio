@@ -42,8 +42,8 @@ Column getInfoLinks(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Opacity(
-              opacity: controller.icon1Opacity.value,
+            FadeTransition(
+              opacity: controller.icon1Opacity,
               child: InkWell(
                 onTap: () {
                   launchURL('https://github.com/AlisterLuiz');
@@ -51,16 +51,16 @@ Column getInfoLinks(
                 child: Icon(FontAwesomeIcons.github),
               ),
             ),
-            Opacity(
-              opacity: controller.icon2Opacity.value,
+            FadeTransition(
+              opacity: controller.icon2Opacity,
               child: InkWell(
                   onTap: () {
                     launchURL('https://www.linkedin.com/in/alisterluiz/');
                   },
                   child: Icon(FontAwesomeIcons.linkedinIn)),
             ),
-            Opacity(
-              opacity: controller.icon3Opacity.value,
+            FadeTransition(
+              opacity: controller.icon3Opacity,
               child: InkWell(
                   onTap: () {
                     launchURL('https://www.instagram.com/alister_luiz/');
@@ -82,18 +82,21 @@ Container getButtons(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Opacity(
-            opacity: controller.descOpacity.value,
-            child: Text(
-              'Flutter Developer and \nAspiring Data Scientist based in\nDubai',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+          FadeTransition(
+            opacity: controller.descOpacity,
+            child: SlideTransition(
+              position: controller.descOffset,
+              child: Text(
+                'Flutter Developer and \nAspiring Data Scientist based in\nDubai',
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+              ),
             ),
           ),
           SizedBox(
             height: 30,
           ),
-          Opacity(
-            opacity: controller.button1Opacity.value,
+          FadeTransition(
+            opacity: controller.button1Opacity,
             child: primaryButton(
                 context,
                 FontAwesomeIcons.fileDownload,
@@ -122,8 +125,8 @@ Container getButtons(
               : Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Opacity(
-                      opacity: controller.button2Opacity.value,
+                    FadeTransition(
+                      opacity: controller.button2Opacity,
                       child: primaryButton(
                           context,
                           Icons.android,
@@ -135,8 +138,8 @@ Container getButtons(
                           () {}),
                     ),
                     SizedBox(width: 20),
-                    Opacity(
-                      opacity: controller.button3Opacity.value,
+                    FadeTransition(
+                      opacity: controller.button3Opacity,
                       child: primaryButton(
                           context,
                           FontAwesomeIcons.apple,

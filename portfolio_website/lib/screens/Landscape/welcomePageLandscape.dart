@@ -79,8 +79,8 @@ class _WelcomePageLandscapeState extends State<WelcomePageLandscape>
                       children: [
                         Positioned(
                           left: animation.imagePosition.value.dx,
-                          child: Opacity(
-                            opacity: animation.imageOpacity.value,
+                          child: FadeTransition(
+                            opacity: animation.imageOpacity,
                             child: getProfilePicture(450, 450),
                           ),
                         ),

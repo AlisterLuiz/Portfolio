@@ -58,8 +58,8 @@ class _WelcomePagePortraitState extends State<WelcomePagePortrait>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Opacity(
-                    opacity: animation.imageOpacity.value,
+                  FadeTransition(
+                    opacity: animation.imageOpacity,
                     child: Container(
                       padding: EdgeInsets.all(20),
                       decoration: new BoxDecoration(

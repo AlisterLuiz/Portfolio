@@ -45,6 +45,14 @@ class WelcomeScreenAnimation {
             curve: Interval(0.55, 0.65, curve: Curves.easeIn),
           ),
         ),
+        descOffset =
+            Tween<Offset>(begin: const Offset(0.35, 0.0), end: Offset.zero)
+                .animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(0.55, 0.65, curve: Curves.easeIn),
+          ),
+        ),
         button1Opacity = Tween<double>(begin: 0, end: 1).animate(
           CurvedAnimation(
             parent: controller,
@@ -72,6 +80,7 @@ class WelcomeScreenAnimation {
   final Animation<double> icon2Opacity;
   final Animation<double> icon3Opacity;
   final Animation<double> descOpacity;
+  final Animation<Offset> descOffset;
   final Animation<double> button1Opacity;
   final Animation<double> button2Opacity;
   final Animation<double> button3Opacity;

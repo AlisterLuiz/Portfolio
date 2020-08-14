@@ -1,3 +1,4 @@
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:portfolio_website/screens/Portrait/projectDescPagePortrait.dart';
 import 'package:portfolio_website/utilities/index.dart';
 
@@ -57,87 +58,109 @@ class _ProjectsPagePortraitState extends State<ProjectsPagePortrait> {
               ),
               Expanded(
                 flex: 7,
-                child: StaggeredGridView.countBuilder(
-                  crossAxisCount: 4,
-                  shrinkWrap: true,
-                  itemCount: (project.length * 2),
-                  itemBuilder: (BuildContext context, int index) {
-                    if (index.isEven && index != 0) count++;
-                    int i = count;
-                    print(project.length);
-                    return (index.isOdd)
-                        ? Container()
-                        : InkWell(
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    ProjectDescriptionPortrait(
-                                  project: project[i],
-                                ),
-                              ),
-                            ),
-                            child: Container(
-                              margin: EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  width: 2,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                              ),
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                    flex: 3,
-                                    child: CarouselSlider(
-                                      items: getElementsLength(
-                                        project[count].images.length,
-                                      ).map((i) {
-                                        return Image.network(
-                                          project[count].images[i],
-                                          fit: BoxFit.fill,
-                                          width: screenWidth(context),
-                                        );
-                                      }).toList(),
-                                      options: CarouselOptions(
-                                        autoPlay: true,
-                                        enableInfiniteScroll: false,
-                                        autoPlayAnimationDuration:
-                                            Duration(seconds: 2),
-                                        viewportFraction: 1,
-                                        height: screenHeight(context) * 0.26,
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: FittedBox(
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal:
-                                              screenWidth(context) * 0.01,
-                                        ),
-                                        child: AutoSizeText(
-                                          project[count].projectName,
-                                          maxLines: 1,
-                                          style: TextStyle(
-                                            fontSize: ScreenUtil().setSp(
-                                              30,
-                                              allowFontScalingSelf: true,
-                                            ),
+                child: AnimationLimiter(
+                  child: StaggeredGridView.countBuilder(
+                    crossAxisCount: 4,
+                    shrinkWrap: true,
+                    itemCount: (project.length * 2),
+                    itemBuilder: (BuildContext context, int index) {
+                      if (index.isEven && index != 0) count++;
+                      int i = count;
+                      print(project.length);
+                      return (index.isOdd)
+                          ? Container()
+                          : AnimationConfiguration.staggeredGrid(
+                              position: i,
+                              duration: Duration(milliseconds: 800),
+                              delay: Duration(milliseconds: 300),
+                              columnCount: 6,
+                              child: FadeInAnimation(
+                                child: FlipAnimation(
+                                  flipAxis: FlipAxis.x,
+                                  child: FlipAnimation(
+                                    flipAxis: FlipAxis.y,
+                                    child: InkWell(
+                                      onTap: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              ProjectDescriptionPortrait(
+                                            project: project[i],
                                           ),
                                         ),
                                       ),
+                                      child: Container(
+                                        margin: EdgeInsets.all(4),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            width: 2,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          ),
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Expanded(
+                                              flex: 3,
+                                              child: CarouselSlider(
+                                                items: getElementsLength(
+                                                  project[count].images.length,
+                                                ).map((i) {
+                                                  return Image.network(
+                                                    project[count].images[i],
+                                                    fit: BoxFit.fill,
+                                                    width: screenWidth(context),
+                                                  );
+                                                }).toList(),
+                                                options: CarouselOptions(
+                                                  autoPlay: true,
+                                                  enableInfiniteScroll: false,
+                                                  autoPlayAnimationDuration:
+                                                      Duration(seconds: 2),
+                                                  viewportFraction: 1,
+                                                  height:
+                                                      screenHeight(context) *
+                                                          0.26,
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: FittedBox(
+                                                child: Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        screenWidth(context) *
+                                                            0.01,
+                                                  ),
+                                                  child: AutoSizeText(
+                                                    project[count].projectName,
+                                                    maxLines: 1,
+                                                    style: TextStyle(
+                                                      fontSize:
+                                                          ScreenUtil().setSp(
+                                                        30,
+                                                        allowFontScalingSelf:
+                                                            true,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                          );
-                  },
-                  staggeredTileBuilder: (int index) =>
-                      StaggeredTile.count(2, index.isEven ? 2 : 1),
-                  mainAxisSpacing: 4.0,
-                  crossAxisSpacing: 4.0,
+                            );
+                    },
+                    staggeredTileBuilder: (int index) =>
+                        StaggeredTile.count(2, index.isEven ? 2 : 1),
+                    mainAxisSpacing: 4.0,
+                    crossAxisSpacing: 4.0,
+                  ),
                 ),
               ),
             ],
