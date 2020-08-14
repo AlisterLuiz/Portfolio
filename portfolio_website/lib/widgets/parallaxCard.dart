@@ -68,8 +68,6 @@ class _ParallaxCardState extends State<ParallaxCard>
 
     double screen = (size.width - 150) / (1280 - 150);
     screen = screen > 1.0 ? 1.0 : screen < 0 ? 0 : screen;
-    double limits = ((screen * 100) * (0.4 - 0.75) / 100) + 0.75;
-    double fontSize = ((screen * 100) * (1.0 - 0.3) / 100) + 0.3;
 
     return Center(
       child: Container(

@@ -29,7 +29,7 @@ class TestimonialsScreenAnimation {
         containerOpacity = Tween<double>(begin: 0, end: 1).animate(
           CurvedAnimation(
             parent: controller,
-            curve: Interval(0.0, 0.1, curve: Curves.easeIn),
+            curve: Interval(0.0, 0.6, curve: Curves.easeIn),
           ),
         );
 
