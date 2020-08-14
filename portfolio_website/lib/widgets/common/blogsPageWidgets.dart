@@ -1,4 +1,5 @@
 import 'package:portfolio_website/utilities/index.dart';
+import 'package:portfolio_website/widgets/animations/blogsScreenAnimations.dart';
 
 AutoSizeText getTitle() {
   return AutoSizeText(
@@ -49,8 +50,8 @@ Widget getSearchFilterIcon(
         );
 }
 
-Widget getBlogsCarousel(
-    BuildContext context, CarouselController _controller, int orientation) {
+Widget getBlogsCarousel(BuildContext context, CarouselController _controller,
+    int orientation, BlogsScreenAnimation animation) {
   final CarouselController _controller = CarouselController();
   final List<Blogs> blogs = Provider.of<List<Blogs>>(context);
   ScreenUtil.init(context, allowFontScaling: true);
@@ -63,39 +64,42 @@ Widget getBlogsCarousel(
           onTap: () {
             launchURL(blogs[i].link);
           },
-          child: Container(
-            // height: screenHeight(context) * 0.6,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Theme.of(context).primaryColor,
+          child: FadeTransition(
+            opacity: animation.containerOpacity,
+            child: Container(
+              // height: screenHeight(context) * 0.6,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Theme.of(context).primaryColor,
+                ),
               ),
-            ),
-            child: Card(
-              color: Theme.of(context).scaffoldBackgroundColor,
-              semanticContainer: true,
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child: Column(
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Image(
-                      image: NetworkImage(blogs[i].photo),
-                      fit: BoxFit.fill,
-                      // height: screenHeight(context) * 0.34,
-                      width: screenWidth(context),
+              child: Card(
+                color: Theme.of(context).scaffoldBackgroundColor,
+                semanticContainer: true,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: Image(
+                        image: NetworkImage(blogs[i].photo),
+                        fit: BoxFit.fill,
+                        // height: screenHeight(context) * 0.34,
+                        width: screenWidth(context),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: screenHeight(context) * 0.02,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: screenWidth(context) * 0.02,
+                    SizedBox(
+                      height: screenHeight(context) * 0.02,
                     ),
-                    child: getBlogDetails(blogs[i]),
-                  ),
-                ],
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: screenWidth(context) * 0.02,
+                      ),
+                      child: getBlogDetails(blogs[i]),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

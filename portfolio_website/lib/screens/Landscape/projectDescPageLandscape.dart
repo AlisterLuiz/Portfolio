@@ -58,29 +58,29 @@ class _ProjectDescriptionLandscapeState
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        TyperAnimatedTextKit(
+                            text: [
+                              widget.project.projectName,
+                            ],
+                            textStyle: TextStyle(
+                              fontSize: ScreenUtil().setSp(
+                                30,
+                                allowFontScalingSelf: true,
+                              ),
+                              fontWeight: FontWeight.bold,
+                            ),
+                            speed: Duration(milliseconds: 100),
+                            isRepeatingAnimation: false,
+                            textAlign: TextAlign.start,
+                            alignment: AlignmentDirectional
+                                .topStart // or Alignment.topLeft
+                            ),
                         Container(
-                          height: screenHeight(context) * 0.35,
+                          height: screenHeight(context) * 0.26,
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              TyperAnimatedTextKit(
-                                  text: [
-                                    widget.project.projectName,
-                                  ],
-                                  textStyle: TextStyle(
-                                    fontSize: ScreenUtil().setSp(
-                                      30,
-                                      allowFontScalingSelf: true,
-                                    ),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  speed: Duration(milliseconds: 100),
-                                  isRepeatingAnimation: false,
-                                  textAlign: TextAlign.start,
-                                  alignment: AlignmentDirectional
-                                      .topStart // or Alignment.topLeft
-                                  ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [

@@ -1,7 +1,12 @@
 import 'package:portfolio_website/utilities/index.dart';
+import 'package:portfolio_website/widgets/animations/testimonialScreenAnimation.dart';
 
 Widget getTestimonialsData(
-    BuildContext context, List<Testimonials> testimonials, i, int orientation) {
+    BuildContext context,
+    List<Testimonials> testimonials,
+    i,
+    int orientation,
+    TestimonialsScreenAnimation animation) {
   ScreenUtil.init(context, allowFontScaling: true);
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -16,7 +21,7 @@ Widget getTestimonialsData(
       ),
       SizedBox(height: 10),
       Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           FittedBox(
@@ -35,7 +40,7 @@ Widget getTestimonialsData(
                           allowFontScalingSelf: true,
                         )
                       : ScreenUtil().setSp(
-                          18,
+                          24,
                           allowFontScalingSelf: true,
                         ),
                   fontWeight: FontWeight.w400,
@@ -45,45 +50,39 @@ Widget getTestimonialsData(
           ),
           SizedBox(height: 10),
           FittedBox(
-            child: Container(
-              height: (orientation == 2) ? null : screenHeight(context) * 0.05,
-              child: AutoSizeText(
-                testimonials[i].name,
-                textAlign: TextAlign.right,
-                style: TextStyle(
-                  fontSize: (orientation == 2)
-                      ? ScreenUtil().setSp(
-                          24,
-                          allowFontScalingSelf: true,
-                        )
-                      : ScreenUtil().setSp(
-                          10,
-                          allowFontScalingSelf: true,
-                        ),
-                  fontWeight: FontWeight.w400,
-                ),
+            child: AutoSizeText(
+              testimonials[i].name,
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                fontSize: (orientation == 2)
+                    ? ScreenUtil().setSp(
+                        24,
+                        allowFontScalingSelf: true,
+                      )
+                    : ScreenUtil().setSp(
+                        20,
+                        allowFontScalingSelf: true,
+                      ),
+                fontWeight: FontWeight.w400,
               ),
             ),
           ),
           FittedBox(
-            child: Container(
-              height: (orientation == 2) ? null : screenHeight(context) * 0.05,
-              child: AutoSizeText(
-                testimonials[i].position,
-                maxLines: 2,
-                textAlign: TextAlign.right,
-                style: TextStyle(
-                  fontSize: (orientation == 2)
-                      ? ScreenUtil().setSp(
-                          24,
-                          allowFontScalingSelf: true,
-                        )
-                      : ScreenUtil().setSp(
-                          10,
-                          allowFontScalingSelf: true,
-                        ),
-                  fontWeight: FontWeight.w400,
-                ),
+            child: AutoSizeText(
+              testimonials[i].position,
+              maxLines: 2,
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                fontSize: (orientation == 2)
+                    ? ScreenUtil().setSp(
+                        24,
+                        allowFontScalingSelf: true,
+                      )
+                    : ScreenUtil().setSp(
+                        20,
+                        allowFontScalingSelf: true,
+                      ),
+                fontWeight: FontWeight.w400,
               ),
             ),
           ),
@@ -94,7 +93,11 @@ Widget getTestimonialsData(
 }
 
 Widget getTestimonialsImage(
-    BuildContext context, List<Testimonials> testimonials, i, int orientation) {
+    BuildContext context,
+    List<Testimonials> testimonials,
+    i,
+    int orientation,
+    TestimonialsScreenAnimation animation) {
   return Image.network(
     testimonials[i].photo,
     height: (orientation == 1)
