@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:portfolio_website/utilities/index.dart';
 
 class SlideItem extends StatelessWidget {
@@ -9,14 +11,25 @@ class SlideItem extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-          height: screenHeight(context) * 0.35,
+          height: screenHeight(context) * 0.4,
           width: screenWidth(context),
-          child: Image.network(
-            image,
-            fit: BoxFit.fill,
-          ),
           decoration: BoxDecoration(
-            shape: BoxShape.circle,
+            image: DecorationImage(
+              image: NetworkImage(image),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: ClipRRect(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+              child: Container(
+                alignment: Alignment.center,
+                child: Image.network(
+                  image,
+                  // fit: BoxFit.fill,
+                ),
+              ),
+            ),
           ),
         ),
         SizedBox(height: 10),

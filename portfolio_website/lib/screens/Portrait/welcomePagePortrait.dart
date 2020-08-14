@@ -48,43 +48,68 @@ class _WelcomePagePortraitState extends State<WelcomePagePortrait>
     );
   }
 
+  ScrollController scrollController = ScrollController();
+
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: animation.controller,
-      builder: (context, child) => SafeArea(
-        child: ListView(
-          children: [
-            FittedBox(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  FadeTransition(
-                    opacity: animation.imageOpacity,
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: new BoxDecoration(
-                        color: Theme.of(context).primaryColor,
+    return Scrollbar(
+      controller: scrollController,
+      isAlwaysShown: true,
+      child: (UniversalPlatform.isWeb)
+          ? Scrollbar(
+              isAlwaysShown: true,
+              controller: scrollController,
+              child: getChild(context),
+            )
+          : getChild(context),
+    );
+  }
+
+  Container getChild(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(
+        left: screenWidth(context) * 0.1,
+        right: screenWidth(context) * 0.1,
+        top: screenHeight(context) * 0.05,
+      ),
+      child: AnimatedBuilder(
+        animation: animation.controller,
+        builder: (context, child) => SafeArea(
+          child: ListView(
+            shrinkWrap: true,
+            controller: scrollController,
+            children: [
+              FittedBox(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Opacity(
+                      opacity: animation.imageOpacity.value,
+                      child: Container(
+                        padding: EdgeInsets.all(20),
+                        decoration: new BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        child: getProfilePicture(null, null),
                       ),
-                      child: getProfilePicture(null, null),
                     ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  getName(),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    getName(),
+                  ],
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  getInfoLinks(context, 2, animation),
                 ],
               ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                getInfoLinks(context, 2, animation),
-              ],
-            ),
-            SizedBox(height: 20),
-            getButtons(context, 2, animation)
-          ],
+              SizedBox(height: 20),
+              getButtons(context, 2, animation)
+            ],
+          ),
         ),
       ),
     );

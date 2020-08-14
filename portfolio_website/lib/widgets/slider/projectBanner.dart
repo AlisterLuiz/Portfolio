@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:portfolio_website/utilities/index.dart';
 import 'package:portfolio_website/widgets/slider/slide_dots.dart';
 import 'package:portfolio_website/widgets/slider/slide_item.dart';
@@ -43,11 +45,27 @@ class _ProjectBannerState extends State<ProjectBanner> {
   @override
   Widget build(BuildContext context) {
     return (widget.slideList.length == 1)
-        ? Image.network(
-            widget.slideList[0],
-            fit: BoxFit.fill,
-            height: screenHeight(context) * 0.35,
+        ? Container(
+            height: screenHeight(context) * 0.4,
             width: screenWidth(context),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(widget.slideList[0]),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: ClipRRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Image.network(
+                    widget.slideList[0],
+                    // fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ),
           )
         : Stack(
             alignment: AlignmentDirectional.bottomCenter,

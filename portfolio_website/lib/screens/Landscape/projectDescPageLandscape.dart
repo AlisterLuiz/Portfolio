@@ -36,7 +36,7 @@ class _ProjectDescriptionLandscapeState
           FadeTransition(
             opacity: animation,
             child: Container(
-              height: screenHeight(context) * 0.4,
+              height: screenHeight(context) * 0.45,
               child: ProjectBanner(
                 slideList: widget.project.images,
               ),
@@ -48,7 +48,7 @@ class _ProjectDescriptionLandscapeState
               horizontal: screenHeight(context) * 0.05,
             ),
             child: Container(
-              height: screenHeight(context) * 0.5,
+              height: screenHeight(context) * 0.4,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -101,7 +101,7 @@ class _ProjectDescriptionLandscapeState
                                           .topStart // or Alignment.topLeft
                                       ),
                                   SizedBox(
-                                    height: 10,
+                                    height: 5,
                                   ),
                                   Padding(
                                     padding: EdgeInsets.only(right: 30.0),
@@ -201,11 +201,12 @@ class _ProjectDescriptionLandscapeState
                     flex: 2,
                     child: FadeTransition(
                       opacity: animation,
-                      child: Text(
+                      child: AutoSizeText(
                         widget.project.text,
                         style: TextStyle(
                           fontSize: ScreenUtil().setSp(
                             24,
+                            allowFontScalingSelf: true,
                           ),
                         ),
                       ),
