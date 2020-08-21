@@ -1,5 +1,5 @@
-import 'package:portfolio_website/utilities/index.dart';
-import 'package:portfolio_website/widgets/animations/blogsScreenAnimations.dart';
+import 'package:Portfolio/utilities/index.dart';
+import 'package:Portfolio/widgets/animations/blogsScreenAnimations.dart';
 
 class BlogPageLandscape extends StatefulWidget {
   @override

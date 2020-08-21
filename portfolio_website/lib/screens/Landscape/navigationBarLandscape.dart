@@ -1,4 +1,4 @@
-import 'package:portfolio_website/utilities/index.dart';
+import 'package:Portfolio/utilities/index.dart';
 
 class NavBarLandscape extends StatefulWidget {
   @override
@@ -23,6 +23,7 @@ class _NavBarLandscapeState extends State<NavBarLandscape> {
     return SafeArea(
       child: DefaultTabController(
         length: 5,
+        initialIndex: _currentIndex.getIndex(),
         child: Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: Padding(

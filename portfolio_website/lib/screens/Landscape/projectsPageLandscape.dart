@@ -1,6 +1,7 @@
+import 'package:Portfolio/screens/Portrait/projectDescPagePortrait.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:portfolio_website/screens/Landscape/projectDescPageLandscape.dart';
-import 'package:portfolio_website/utilities/index.dart';
+import 'package:Portfolio/screens/Landscape/projectDescPageLandscape.dart';
+import 'package:Portfolio/utilities/index.dart';
 
 class ProjectsPageLandscape extends StatefulWidget {
   @override
@@ -90,9 +91,54 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                                                   context,
                                                   MaterialPageRoute(
                                                     builder: (context) =>
-                                                        ProjectDescriptionLandscape(
-                                                            project:
-                                                                project[index]),
+                                                        BaseWidget<
+                                                            HomeViewModel>(
+                                                      viewModel:
+                                                          HomeViewModel(),
+                                                      onModelReady: (model) =>
+                                                          model.initialise(),
+                                                      child: ScreenTypeLayout(
+                                                        mobile:
+                                                            OrientationLayout(
+                                                          portrait: (context) =>
+                                                              ProjectDescriptionPortrait(
+                                                                  project:
+                                                                      project[
+                                                                          index]),
+                                                          landscape: (context) =>
+                                                              ProjectDescriptionLandscape(
+                                                                  project:
+                                                                      project[
+                                                                          index]),
+                                                        ),
+                                                        tablet:
+                                                            OrientationLayout(
+                                                          portrait: (context) =>
+                                                              ProjectDescriptionPortrait(
+                                                                  project:
+                                                                      project[
+                                                                          index]),
+                                                          landscape: (context) =>
+                                                              ProjectDescriptionLandscape(
+                                                                  project:
+                                                                      project[
+                                                                          index]),
+                                                        ),
+                                                        desktop:
+                                                            OrientationLayout(
+                                                          portrait: (context) =>
+                                                              ProjectDescriptionPortrait(
+                                                                  project:
+                                                                      project[
+                                                                          index]),
+                                                          landscape: (context) =>
+                                                              ProjectDescriptionLandscape(
+                                                                  project:
+                                                                      project[
+                                                                          index]),
+                                                        ),
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
                                                 child: Container(
@@ -210,7 +256,7 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                             ),
                           ),
                           Text(
-                            currentProject[currentProjectID.getIndex()],
+                            currentProjectName[currentProjectID.getIndex()],
                             style: TextStyle(
                               fontSize: ScreenUtil().setSp(
                                 30,

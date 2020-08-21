@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:portfolio_website/utilities/index.dart';
+import 'package:Portfolio/utilities/index.dart';
 
 class SlideItem extends StatelessWidget {
   final String image;

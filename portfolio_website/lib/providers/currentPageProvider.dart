@@ -1,12 +1,13 @@
-import 'package:portfolio_website/utilities/index.dart';
+import 'package:Portfolio/utilities/index.dart';
 
 class CurrentPageProvider extends ChangeNotifier {
-  int _currentIndex = 0;
-
+  int currentIndex;
+  CurrentPageProvider({this.currentIndex});
+  
   setIndex(int index) {
-    _currentIndex = index;
+    currentIndex = index;
     notifyListeners();
   }
 
-  int getIndex() => _currentIndex;
+  int getIndex() => currentIndex;
 }

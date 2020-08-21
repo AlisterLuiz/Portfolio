@@ -1,6 +1,6 @@
 
 
-import 'package:portfolio_website/utilities/index.dart';
+import 'package:Portfolio/utilities/index.dart';
 
 class ResponsiveBuilder extends StatelessWidget {
   final Widget Function(

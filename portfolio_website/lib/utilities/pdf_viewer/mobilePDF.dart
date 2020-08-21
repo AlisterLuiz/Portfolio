@@ -1,5 +1,5 @@
-import 'package:portfolio_website/utilities/index.dart';
-import 'package:portfolio_website/utilities/pdf_viewer/storage/mobileStorage.dart';
+import 'package:Portfolio/utilities/index.dart';
+import 'package:Portfolio/utilities/pdf_viewer/storage/mobileStorage.dart';
 
 class LaunchFile {
   static void launchPDF(

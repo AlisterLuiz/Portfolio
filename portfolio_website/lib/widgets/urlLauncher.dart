@@ -1,4 +1,4 @@
-import 'package:portfolio_website/utilities/index.dart';
+import 'package:Portfolio/utilities/index.dart';
 
 launchURL(String link) async {
   String url = link;

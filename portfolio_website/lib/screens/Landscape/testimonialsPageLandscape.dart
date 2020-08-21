@@ -1,5 +1,5 @@
-import 'package:portfolio_website/utilities/index.dart';
-import 'package:portfolio_website/widgets/animations/testimonialScreenAnimation.dart';
+import 'package:Portfolio/utilities/index.dart';
+import 'package:Portfolio/widgets/animations/testimonialScreenAnimation.dart';
 
 class TestimonialsPageLandscape extends StatefulWidget {
   @override

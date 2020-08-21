@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:portfolio_website/utilities/index.dart';
-import 'package:portfolio_website/widgets/slider/projectBanner.dart';
+import 'package:Portfolio/utilities/index.dart';
+import 'package:Portfolio/widgets/slider/projectBanner.dart';
 
 class ProjectDescriptionLandscape extends StatefulWidget {
   final Projects project;

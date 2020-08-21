@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:portfolio_website/utilities/index.dart';
-import 'package:portfolio_website/utilities/pdf_viewer/launchPDF.dart';
-import 'package:portfolio_website/widgets/animations/welcomeScreenAnimations.dart';
+import 'package:Portfolio/utilities/index.dart';
+import 'package:Portfolio/utilities/pdf_viewer/launchPDF.dart';
+import 'package:Portfolio/widgets/animations/welcomeScreenAnimations.dart';
 
 Image getProfilePicture(double height, double width) {
   return Image.asset('assets/images/profile.png', height: height, width: width);

@@ -1,6 +1,7 @@
+import 'package:Portfolio/screens/Landscape/projectDescPageLandscape.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:portfolio_website/screens/Portrait/projectDescPagePortrait.dart';
-import 'package:portfolio_website/utilities/index.dart';
+import 'package:Portfolio/screens/Portrait/projectDescPagePortrait.dart';
+import 'package:Portfolio/utilities/index.dart';
 
 class ProjectsPagePortrait extends StatefulWidget {
   @override
@@ -33,6 +34,7 @@ class _ProjectsPagePortraitState extends State<ProjectsPagePortrait> {
                       InkWell(
                         onTap: () {
                           currentProjectID.setIndex(0);
+                          count = 0;
                         },
                         child: Icon(
                           Icons.arrow_back,
@@ -44,7 +46,7 @@ class _ProjectsPagePortraitState extends State<ProjectsPagePortrait> {
                       ),
                       SizedBox(width: 5),
                       Text(
-                        currentProject[currentProjectID.getIndex()],
+                        currentProjectName[currentProjectID.getIndex()],
                         style: TextStyle(
                           fontSize: ScreenUtil().setSp(
                             30,
@@ -66,7 +68,6 @@ class _ProjectsPagePortraitState extends State<ProjectsPagePortrait> {
                     itemBuilder: (BuildContext context, int index) {
                       if (index.isEven && index != 0) count++;
                       int i = count;
-                      print(project.length);
                       return (index.isOdd)
                           ? Container()
                           : AnimationConfiguration.staggeredGrid(
@@ -84,8 +85,42 @@ class _ProjectsPagePortraitState extends State<ProjectsPagePortrait> {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) =>
-                                              ProjectDescriptionPortrait(
-                                            project: project[i],
+                                              BaseWidget<HomeViewModel>(
+                                            viewModel: HomeViewModel(),
+                                            onModelReady: (model) =>
+                                                model.initialise(),
+                                            child: ScreenTypeLayout(
+                                              mobile: OrientationLayout(
+                                                portrait: (context) =>
+                                                    ProjectDescriptionPortrait(
+                                                        project:
+                                                            project[i]),
+                                                landscape: (context) =>
+                                                    ProjectDescriptionLandscape(
+                                                        project:
+                                                            project[i]),
+                                              ),
+                                              tablet: OrientationLayout(
+                                                portrait: (context) =>
+                                                    ProjectDescriptionPortrait(
+                                                        project:
+                                                            project[i]),
+                                                landscape: (context) =>
+                                                    ProjectDescriptionLandscape(
+                                                        project:
+                                                            project[i]),
+                                              ),
+                                              desktop: OrientationLayout(
+                                                portrait: (context) =>
+                                                    ProjectDescriptionPortrait(
+                                                        project:
+                                                            project[i]),
+                                                landscape: (context) =>
+                                                    ProjectDescriptionLandscape(
+                                                        project:
+                                                            project[i]),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),

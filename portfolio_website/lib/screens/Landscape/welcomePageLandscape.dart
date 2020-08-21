@@ -1,6 +1,6 @@
-import 'package:portfolio_website/utilities/index.dart';
-import 'package:portfolio_website/utilities/pdf_viewer/launchPDF.dart';
-import 'package:portfolio_website/widgets/animations/welcomeScreenAnimations.dart';
+import 'package:Portfolio/utilities/index.dart';
+import 'package:Portfolio/utilities/pdf_viewer/launchPDF.dart';
+import 'package:Portfolio/widgets/animations/welcomeScreenAnimations.dart';
 
 String file = "Resume.pdf";
 String fileName = "Resume";

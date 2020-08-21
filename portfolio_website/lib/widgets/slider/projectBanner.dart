@@ -1,8 +1,8 @@
 import 'dart:ui';
 
-import 'package:portfolio_website/utilities/index.dart';
-import 'package:portfolio_website/widgets/slider/slide_dots.dart';
-import 'package:portfolio_website/widgets/slider/slide_item.dart';
+import 'package:Portfolio/utilities/index.dart';
+import 'package:Portfolio/widgets/slider/slide_dots.dart';
+import 'package:Portfolio/widgets/slider/slide_item.dart';
 
 class ProjectBanner extends StatefulWidget {
   final List slideList;

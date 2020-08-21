@@ -1,6 +1,6 @@
-import 'package:portfolio_website/utilities/index.dart';
-import 'package:portfolio_website/utilities/pdf_viewer/storage/webStorage.dart';
-import 'package:portfolio_website/utilities/pdf_viewer/url_launcher/web.dart';
+import 'package:Portfolio/utilities/index.dart';
+import 'package:Portfolio/utilities/pdf_viewer/storage/webStorage.dart';
+import 'package:Portfolio/utilities/pdf_viewer/url_launcher/web.dart';
 
 class LaunchFile {
   static void launchPDF(

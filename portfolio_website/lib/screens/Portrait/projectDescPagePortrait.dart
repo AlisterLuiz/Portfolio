@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:portfolio_website/utilities/index.dart';
-import 'package:portfolio_website/widgets/slider/projectBanner.dart';
+import 'package:Portfolio/utilities/index.dart';
+import 'package:Portfolio/widgets/slider/projectBanner.dart';
 
 class ProjectDescriptionPortrait extends StatefulWidget {
   final Projects project;
@@ -44,10 +44,10 @@ class _ProjectDescriptionPortraitState extends State<ProjectDescriptionPortrait>
     );
   }
 
-  Column getChild(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
+  Widget getChild(BuildContext context) {
+    return ListView(
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      // crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Stack(
           children: [
@@ -124,36 +124,32 @@ class _ProjectDescriptionPortraitState extends State<ProjectDescriptionPortrait>
                             .topStart // or Alignment.topLeft
                         ),
                   ),
-                  Center(
+                  AnimationLimiter(
                     child: Container(
                       alignment: Alignment.center,
-                      child: AnimationLimiter(
-                        child: GridView.builder(
-                          shrinkWrap: true,
-                          itemCount: widget.project.stack.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Expanded(
-                              child: AnimationConfiguration.staggeredGrid(
-                                position: index,
-                                duration: Duration(milliseconds: 800),
-                                delay: Duration(milliseconds: 300),
-                                columnCount: 6,
-                                child: FadeInAnimation(
-                                  child: getTechStack(
-                                    context,
-                                    widget.project.stack[index],
-                                  ),
+                      child: GridView.builder(
+                        shrinkWrap: true,
+                        itemCount: widget.project.stack.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Expanded(
+                            child: AnimationConfiguration.staggeredGrid(
+                              position: index,
+                              duration: Duration(milliseconds: 800),
+                              delay: Duration(milliseconds: 300),
+                              columnCount: 6,
+                              child: FadeInAnimation(
+                                child: getTechStack(
+                                  context,
+                                  widget.project.stack[index],
                                 ),
                               ),
-                            );
-                          },
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            childAspectRatio:
-                                MediaQuery.of(context).size.width /
-                                    (MediaQuery.of(context).size.height / 4.5),
-                          ),
+                            ),
+                          );
+                        },
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          childAspectRatio: MediaQuery.of(context).size.width /
+                              (MediaQuery.of(context).size.height / 4.5),
                         ),
                       ),
                     ),
@@ -173,35 +169,34 @@ class _ProjectDescriptionPortraitState extends State<ProjectDescriptionPortrait>
                 ),
               ),
               SizedBox(height: 20),
-              Center(
-                child: Container(
-                  alignment: Alignment.center,
-                  child: AnimationLimiter(
-                    child: GridView.builder(
-                      shrinkWrap: true,
-                      itemCount: widget.project.links.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Expanded(
-                          child: AnimationConfiguration.staggeredGrid(
-                            position: index,
-                            duration: Duration(milliseconds: 800),
-                            delay: Duration(milliseconds: 300),
-                            columnCount: 2,
-                            child: FadeInAnimation(
-                              child: getMapper(
-                                context,
-                                widget.project,
-                                widget.project.links.keys.toList()[index],
-                              ),
+              Container(
+                alignment: Alignment.center,
+                child: AnimationLimiter(
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    itemCount: widget.project.links.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Expanded(
+                        child: AnimationConfiguration.staggeredGrid(
+                          position: index,
+                          duration: Duration(milliseconds: 800),
+                          delay: Duration(milliseconds: 300),
+                          columnCount:
+                              widget.project.links.keys.toList()[index].length,
+                          child: FadeInAnimation(
+                            child: getMapper(
+                              context,
+                              widget.project,
+                              widget.project.links.keys.toList()[index],
                             ),
                           ),
-                        );
-                      },
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: MediaQuery.of(context).size.width /
-                            (MediaQuery.of(context).size.height / 4.5),
-                      ),
+                        ),
+                      );
+                    },
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: MediaQuery.of(context).size.width /
+                          (MediaQuery.of(context).size.height / 4.5),
                     ),
                   ),
                 ),

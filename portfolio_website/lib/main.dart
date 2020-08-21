@@ -1,5 +1,5 @@
 import 'package:device_preview/device_preview.dart';
-import 'package:portfolio_website/utilities/index.dart';
+import 'package:Portfolio/utilities/index.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,7 +10,7 @@ void main() {
           create: (BuildContext context) => ThemeModel(),
         ),
         ChangeNotifierProvider<CurrentPageProvider>(
-          create: (context) => CurrentPageProvider(),
+          create: (context) => CurrentPageProvider(currentIndex: 0),
         ),
         ChangeNotifierProvider<CurrentProjectIDProvider>(
           create: (context) => CurrentProjectIDProvider(),

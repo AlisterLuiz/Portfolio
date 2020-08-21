@@ -1,12 +1,12 @@
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:portfolio_website/utilities/index.dart';
-import 'package:portfolio_website/widgets/parallaxCard.dart';
+import 'package:Portfolio/utilities/index.dart';
+import 'package:Portfolio/widgets/parallaxCard.dart';
 
 List categories = [
   ['assets/images/mobileApp.png', FontAwesomeIcons.mobileAlt, 'Mobile Apps'],
-  ['assets/images/fullStack.jpg', Icons.laptop_chromebook, 'Full Stack'],
+  ['assets/images/fullStack.png', Icons.laptop_chromebook, 'Full Stack'],
   ['assets/images/ML.png', Icons.graphic_eq, 'Machine Learning'],
-  ['assets/images/academic.jpg', FontAwesomeIcons.userGraduate, 'Academic'],
+  ['assets/images/academic.png', FontAwesomeIcons.userGraduate, 'Academic'],
 ];
 
 Map onSelected = {
@@ -23,7 +23,7 @@ Map currentProjectList = {
   4: 'Academic',
 };
 
-Map currentProject = {
+Map currentProjectName = {
   1: 'Mobile App Development',
   2: 'Full Stack Development',
   3: 'Machine Learning Projects',
@@ -55,7 +55,7 @@ Widget getProjectCategories(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: (orientation == 1) ? 2 : 1,
             childAspectRatio: (orientation == 1)
-                ? screenWidth(context) * 1.1 / screenHeight(context) * 1.1
+                ? screenWidth(context) * 1.1 / screenHeight(context) * 1.08
                 : screenWidth(context) * 2 / screenHeight(context) * 2,
           ),
           itemBuilder: (context, index) {
@@ -101,9 +101,10 @@ Widget getProjectCategories(
                         child: GFCard(
                           elevation: (hover == true) ? 5 : 1,
                           boxFit: BoxFit.cover,
-                          imageOverlay: NetworkImage(categories[index][0]),
+                          imageOverlay: AssetImage(categories[index][0]),
                           title: GFListTile(
-                            icon: FittedBox(child: Icon(categories[index][1])),
+                            icon:
+                                FittedBox(child: Icon(categories[index][1])),
                             title: FittedBox(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,

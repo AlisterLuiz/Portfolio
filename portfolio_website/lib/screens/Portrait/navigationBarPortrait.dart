@@ -1,4 +1,4 @@
-import 'package:portfolio_website/utilities/index.dart';
+import 'package:Portfolio/utilities/index.dart';
 
 class NavBarPortrait extends StatefulWidget {
   @override
@@ -20,7 +20,6 @@ class _NavBarPortraitState extends State<NavBarPortrait> {
 
   Widget build(BuildContext context) {
     final _currentIndex = Provider.of<CurrentPageProvider>(context);
-
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: (_currentIndex.getIndex() != 0)

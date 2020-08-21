@@ -1,5 +1,5 @@
 import 'package:firebase/firebase.dart';
-import 'package:portfolio_website/utilities/index.dart';
+import 'package:Portfolio/utilities/index.dart';
 
 class FireStorageService extends ChangeNotifier {
   // FireStorageService._();
