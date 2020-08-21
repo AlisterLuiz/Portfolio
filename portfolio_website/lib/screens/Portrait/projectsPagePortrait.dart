@@ -1,7 +1,5 @@
-import 'package:Portfolio/screens/Landscape/projectDescPageLandscape.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:Portfolio/screens/Portrait/projectDescPagePortrait.dart';
 import 'package:Portfolio/utilities/index.dart';
+import 'package:optimized_cached_image/optimized_cached_image.dart';
 
 class ProjectsPagePortrait extends StatefulWidget {
   @override
@@ -93,32 +91,26 @@ class _ProjectsPagePortraitState extends State<ProjectsPagePortrait> {
                                               mobile: OrientationLayout(
                                                 portrait: (context) =>
                                                     ProjectDescriptionPortrait(
-                                                        project:
-                                                            project[i]),
+                                                        project: project[i]),
                                                 landscape: (context) =>
                                                     ProjectDescriptionLandscape(
-                                                        project:
-                                                            project[i]),
+                                                        project: project[i]),
                                               ),
                                               tablet: OrientationLayout(
                                                 portrait: (context) =>
                                                     ProjectDescriptionPortrait(
-                                                        project:
-                                                            project[i]),
+                                                        project: project[i]),
                                                 landscape: (context) =>
                                                     ProjectDescriptionLandscape(
-                                                        project:
-                                                            project[i]),
+                                                        project: project[i]),
                                               ),
                                               desktop: OrientationLayout(
                                                 portrait: (context) =>
                                                     ProjectDescriptionPortrait(
-                                                        project:
-                                                            project[i]),
+                                                        project: project[i]),
                                                 landscape: (context) =>
                                                     ProjectDescriptionLandscape(
-                                                        project:
-                                                            project[i]),
+                                                        project: project[i]),
                                               ),
                                             ),
                                           ),
@@ -141,8 +133,11 @@ class _ProjectsPagePortraitState extends State<ProjectsPagePortrait> {
                                                 items: getElementsLength(
                                                   project[count].images.length,
                                                 ).map((i) {
-                                                  return Image.network(
-                                                    project[count].images[i],
+                                                  return Image(
+                                                    image:
+                                                        OptimizedCacheImageProvider(
+                                                      project[count].images[i],
+                                                    ),
                                                     fit: BoxFit.fill,
                                                     width: screenWidth(context),
                                                   );

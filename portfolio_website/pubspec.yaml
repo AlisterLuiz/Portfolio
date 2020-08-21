@@ -53,6 +53,8 @@ dependencies:
   characters: ^1.0.0
   animated_text_kit: ^2.2.0
   flutter_staggered_animations: ^0.1.2
+  cached_network_image: ^2.2.0+1
+  optimized_cached_image: ^1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

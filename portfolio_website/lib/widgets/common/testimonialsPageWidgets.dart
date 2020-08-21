@@ -1,5 +1,6 @@
 import 'package:Portfolio/utilities/index.dart';
 import 'package:Portfolio/widgets/animations/testimonialScreenAnimation.dart';
+import 'package:optimized_cached_image/optimized_cached_image.dart';
 
 Widget getTestimonialsData(
     BuildContext context,
@@ -98,8 +99,10 @@ Widget getTestimonialsImage(
     i,
     int orientation,
     TestimonialsScreenAnimation animation) {
-  return Image.network(
-    testimonials[i].photo,
+  return Image(
+    image: OptimizedCacheImageProvider(
+      testimonials[i].photo,
+    ),
     height: (orientation == 1)
         ? screenHeight(context) * 0.7
         : screenHeight(context) * 0.4,

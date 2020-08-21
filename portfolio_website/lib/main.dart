@@ -1,8 +1,12 @@
+import 'package:Portfolio/widgets/scrollConfig.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:Portfolio/utilities/index.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+  ));
   runApp(
     MultiProvider(
       providers: [
@@ -39,13 +43,16 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      builder: DevicePreview.appBuilder,
-      title: 'Portfolio - Alister Luiz',
-      theme: Provider.of<ThemeModel>(context).currentTheme,
-      initialRoute: Routes.homeView,
-      routes: Routes.routes,
-      debugShowCheckedModeBanner: false,
+    return ScrollConfiguration(
+      behavior: MyBehavior(),
+      child: MaterialApp(
+        builder: DevicePreview.appBuilder,
+        title: 'Portfolio - Alister Luiz',
+        theme: Provider.of<ThemeModel>(context).currentTheme,
+        initialRoute: Routes.homeView,
+        routes: Routes.routes,
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

@@ -17,6 +17,8 @@ export 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:infinity_page_view/infinity_page_view.dart';
 export 'dart:async';
+export 'package:cached_network_image/cached_network_image.dart';
+export 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 // PDF Support
 export 'package:flutter_full_pdf_viewer/flutter_full_pdf_viewer.dart';
@@ -68,6 +70,7 @@ export 'package:Portfolio/screens/Landscape/BlogPageLandscape.dart';
 export 'package:Portfolio/screens/Landscape/projectsPageLandscape.dart';
 export 'package:Portfolio/screens/Landscape/TestimonialsPageLandscape.dart';
 export 'package:Portfolio/screens/Landscape/AboutPageLandscape.dart';
+export 'package:Portfolio/screens/Landscape/projectDescPageLandscape.dart';
 
 // Portrait for Tablet and Phone
 export 'package:Portfolio/screens/Portrait/navigationBarPortrait.dart';
@@ -76,6 +79,7 @@ export 'package:Portfolio/screens/Portrait/projectsPagePortrait.dart';
 export 'package:Portfolio/screens/Portrait/blogsPagePortrait.dart';
 export 'package:Portfolio/screens/Portrait/TestimonialsPagePortrait.dart';
 export 'package:Portfolio/screens/Portrait/aboutPagePortrait.dart';
+export 'package:Portfolio/screens/Portrait/projectDescPagePortrait.dart';
 
 // Services
 export 'package:Portfolio/services/databaseService.dart';

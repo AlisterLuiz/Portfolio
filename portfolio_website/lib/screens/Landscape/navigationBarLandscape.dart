@@ -81,9 +81,11 @@ class _NavBarLandscapeState extends State<NavBarLandscape> {
                                 ),
                               ),
                               Tab(
-                                child: Text(
-                                  'Testimonials',
-                                  style: TextStyle(fontSize: 20),
+                                child: FittedBox(
+                                  child: Text(
+                                    'Testimonials',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
                                 ),
                               ),
                               Tab(

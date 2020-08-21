@@ -55,7 +55,7 @@ class _TestimonialsPageLandscapeState extends State<TestimonialsPageLandscape>
               seconds: 5,
             ),
             viewportFraction: 1,
-            height: screenHeight(context) * 0.7,
+            height: screenHeight(context) * 0.72,
             onPageChanged: (i, reason) {},
           ),
         ),

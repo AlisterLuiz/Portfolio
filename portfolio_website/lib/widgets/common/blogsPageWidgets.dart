@@ -56,62 +56,59 @@ Widget getBlogsCarousel(BuildContext context, CarouselController _controller,
   final List<Blogs> blogs = Provider.of<List<Blogs>>(context);
   ScreenUtil.init(context, allowFontScaling: true);
   ScreenUtil().setSp(30, allowFontScalingSelf: true);
-  return Expanded(
-    flex: 2,
-    child: CarouselSlider(
-      items: getElementsLength(blogs.length).map((i) {
-        return InkWell(
-          onTap: () {
-            launchURL(blogs[i].link);
-          },
-          child: FadeTransition(
-            opacity: animation.containerOpacity,
-            child: Container(
-              // height: screenHeight(context) * 0.6,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Theme.of(context).primaryColor,
-                ),
+  return CarouselSlider(
+    items: getElementsLength(blogs.length).map((i) {
+      return InkWell(
+        onTap: () {
+          launchURL(blogs[i].link);
+        },
+        child: FadeTransition(
+          opacity: animation.containerOpacity,
+          child: Container(
+            // height: screenHeight(context) * 0.6,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Theme.of(context).primaryColor,
               ),
-              child: Card(
-                color: Theme.of(context).scaffoldBackgroundColor,
-                semanticContainer: true,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: Image(
-                        image: NetworkImage(blogs[i].photo),
-                        fit: BoxFit.fill,
-                        // height: screenHeight(context) * 0.34,
-                        width: screenWidth(context),
-                      ),
+            ),
+            child: Card(
+              color: Theme.of(context).scaffoldBackgroundColor,
+              semanticContainer: true,
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child: Column(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Image(
+                      image: NetworkImage(blogs[i].photo),
+                      fit: BoxFit.fill,
+                      // height: screenHeight(context) * 0.34,
+                      width: screenWidth(context),
                     ),
-                    SizedBox(
-                      height: screenHeight(context) * 0.02,
+                  ),
+                  SizedBox(
+                    height: screenHeight(context) * 0.02,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: screenWidth(context) * 0.02,
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: screenWidth(context) * 0.02,
-                      ),
-                      child: getBlogDetails(blogs[i]),
-                    ),
-                  ],
-                ),
+                    child: getBlogDetails(blogs[i]),
+                  ),
+                ],
               ),
             ),
           ),
-        );
-      }).toList(),
-      options: CarouselOptions(
-        enlargeCenterPage: true,
-        enableInfiniteScroll: false,
-        height: screenHeight(context) * 0.5,
-      ),
-      carouselController: _controller,
+        ),
+      );
+    }).toList(),
+    options: CarouselOptions(
+      enlargeCenterPage: true,
+      enableInfiniteScroll: false,
+      height: screenHeight(context) * 0.5,
     ),
+    carouselController: _controller,
   );
 }
 

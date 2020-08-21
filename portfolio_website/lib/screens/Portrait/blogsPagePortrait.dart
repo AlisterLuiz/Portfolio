@@ -24,8 +24,8 @@ class _BlogPagePortraitState extends State<BlogPagePortrait>
 
   @override
   void dispose() {
-    super.dispose();
     controller.dispose();
+    super.dispose();
   }
 
   Widget build(BuildContext context) {

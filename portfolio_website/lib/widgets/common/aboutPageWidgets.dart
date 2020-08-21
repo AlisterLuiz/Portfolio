@@ -33,7 +33,7 @@ Container getExperience(
           SlideTransition(
             position: animation.text2Offset,
             child: Container(
-              width: 300,
+              width: 400,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

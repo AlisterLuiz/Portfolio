@@ -28,8 +28,8 @@ class _WelcomePageLandscapeState extends State<WelcomePageLandscape>
 
   @override
   void dispose() {
-    super.dispose();
     controller.dispose();
+    super.dispose();
   }
 
   getPDF() {

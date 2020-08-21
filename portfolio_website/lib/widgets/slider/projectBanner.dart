@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:Portfolio/utilities/index.dart';
 import 'package:Portfolio/widgets/slider/slide_dots.dart';
 import 'package:Portfolio/widgets/slider/slide_item.dart';
+import 'package:optimized_cached_image/optimized_cached_image.dart';
 
 class ProjectBanner extends StatefulWidget {
   final List slideList;
@@ -18,22 +19,23 @@ class _ProjectBannerState extends State<ProjectBanner> {
   @override
   void initState() {
     super.initState();
-    Timer.periodic(Duration(seconds: 3), (Timer timer) {
-      if (_currentPage < 6) {
-        _currentPage++;
-        _pageController.animateToPage(
-          _currentPage,
-          duration: Duration(seconds: 1, milliseconds: 500),
-          curve: Curves.easeIn,
-        );
-      }
-    });
+    if (widget.slideList.length != 1)
+      Timer.periodic(Duration(seconds: 3), (Timer timer) {
+        if (_currentPage < 6) {
+          _currentPage++;
+          _pageController.animateToPage(
+            _currentPage,
+            duration: Duration(seconds: 1, milliseconds: 500),
+            curve: Curves.easeIn,
+          );
+        }
+      });
   }
 
   @override
   void dispose() {
-    super.dispose();
     _pageController.dispose();
+    super.dispose();
   }
 
   _onPageChanged(int index) {
@@ -50,7 +52,7 @@ class _ProjectBannerState extends State<ProjectBanner> {
             width: screenWidth(context),
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(widget.slideList[0]),
+                image: OptimizedCacheImageProvider(widget.slideList[0]),
                 fit: BoxFit.cover,
               ),
             ),
@@ -59,9 +61,8 @@ class _ProjectBannerState extends State<ProjectBanner> {
                 filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                 child: Container(
                   alignment: Alignment.center,
-                  child: Image.network(
-                    widget.slideList[0],
-                    // fit: BoxFit.fill,
+                  child: Image(
+                    image: OptimizedCacheImageProvider(widget.slideList[0]),
                   ),
                 ),
               ),

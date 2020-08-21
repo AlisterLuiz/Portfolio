@@ -26,8 +26,8 @@ class _BlogPageLandscapeState extends State<BlogPageLandscape>
 
   @override
   void dispose() {
-    super.dispose();
     controller.dispose();
+    super.dispose();
   }
 
   Widget build(BuildContext context) {
@@ -87,7 +87,9 @@ class _BlogPageLandscapeState extends State<BlogPageLandscape>
                   ],
                 ),
               ),
-              getBlogsCarousel(context, _controller, 1, animation),
+              Expanded(
+                  flex: 2,
+                  child: getBlogsCarousel(context, _controller, 1, animation)),
             ],
           ),
           SizedBox(height: 10),

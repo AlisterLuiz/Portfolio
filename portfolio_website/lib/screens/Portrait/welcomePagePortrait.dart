@@ -25,8 +25,8 @@ class _WelcomePagePortraitState extends State<WelcomePagePortrait>
 
   @override
   void dispose() {
-    super.dispose();
     controller.dispose();
+    super.dispose();
   }
 
   getPDF() {
@@ -51,17 +51,13 @@ class _WelcomePagePortraitState extends State<WelcomePagePortrait>
   ScrollController scrollController = ScrollController();
 
   Widget build(BuildContext context) {
-    return Scrollbar(
-      controller: scrollController,
-      isAlwaysShown: true,
-      child: (UniversalPlatform.isWeb)
-          ? Scrollbar(
-              isAlwaysShown: true,
-              controller: scrollController,
-              child: getChild(context),
-            )
-          : getChild(context),
-    );
+    return (UniversalPlatform.isWeb)
+        ? Scrollbar(
+            isAlwaysShown: true,
+            controller: scrollController,
+            child: getChild(context),
+          )
+        : getChild(context);
   }
 
   Container getChild(BuildContext context) {
@@ -76,7 +72,7 @@ class _WelcomePagePortraitState extends State<WelcomePagePortrait>
         builder: (context, child) => SafeArea(
           child: ListView(
             shrinkWrap: true,
-            controller: scrollController,
+            controller: (UniversalPlatform.isWeb) ? scrollController : null,
             children: [
               FittedBox(
                 child: Column(

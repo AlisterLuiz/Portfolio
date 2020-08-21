@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:Portfolio/utilities/index.dart';
+import 'package:optimized_cached_image/optimized_cached_image.dart';
 
 class SlideItem extends StatelessWidget {
   final String image;
@@ -24,9 +25,8 @@ class SlideItem extends StatelessWidget {
               filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
               child: Container(
                 alignment: Alignment.center,
-                child: Image.network(
-                  image,
-                  // fit: BoxFit.fill,
+                child: Image(
+                  image: OptimizedCacheImageProvider(image),
                 ),
               ),
             ),
