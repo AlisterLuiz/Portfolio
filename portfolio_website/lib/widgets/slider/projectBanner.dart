@@ -72,7 +72,7 @@ class _ProjectBannerState extends State<ProjectBanner> {
             alignment: AlignmentDirectional.bottomCenter,
             children: <Widget>[
               InfinityPageView(
-                reverse: true,
+                // reverse: true,
                 scrollDirection: Axis.horizontal,
                 controller: _pageController,
                 onPageChanged: _onPageChanged,
