@@ -255,6 +255,9 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                               ),
                             ),
                           ),
+                          SizedBox(
+                            width: 10,
+                          ),
                           Text(
                             currentProjectName[currentProjectID.getIndex()],
                             style: TextStyle(
@@ -291,7 +294,7 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                                   ),
                                 )
                               : Container(),
-                          SizedBox(width: 5),
+                          SizedBox(width: 10),
                           Text(
                             'Page ${currentPage + 1} of ${(project.length / 3).ceil()}',
                             style: TextStyle(
@@ -301,7 +304,7 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                               ),
                             ),
                           ),
-                          SizedBox(width: 5),
+                          SizedBox(width: 10),
                           (currentPage != (project.length / 3).ceil() - 1)
                               ? IconButton(
                                   onPressed: () {

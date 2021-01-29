@@ -14,6 +14,7 @@ Widget getName() {
       ],
       textStyle: TextStyle(
         fontSize: 100.0,
+        color: Colors.white,
         fontWeight: FontWeight.w600,
       ),
       totalRepeatCount: 1,
@@ -120,38 +121,56 @@ Container getButtons(
           SizedBox(
             height: 10,
           ),
-          (UniversalPlatform.isAndroid || UniversalPlatform.isIOS)
+                  (UniversalPlatform.isAndroid || UniversalPlatform.isIOS)
               ? Container()
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FadeTransition(
-                      opacity: controller.button2Opacity,
-                      child: primaryButton(
-                          context,
-                          Icons.android,
-                          Colors.green,
-                          Theme.of(context).primaryColor,
-                          190,
-                          "Available on Android!",
-                          110,
-                          () {}),
-                    ),
-                    SizedBox(width: 20),
-                    FadeTransition(
-                      opacity: controller.button3Opacity,
-                      child: primaryButton(
-                          context,
-                          FontAwesomeIcons.apple,
-                          Colors.black,
-                          Theme.of(context).primaryColor,
-                          190,
-                          "Available on iOS!",
-                          110,
-                          () {}),
-                    ),
-                  ],
-                )
+              : FadeTransition(
+                opacity: controller.button2Opacity,
+                child: primaryButton(
+                    context,
+                    Icons.android,
+                    Colors.green,
+                    Theme.of(context).primaryColor,
+                    400,
+                    "Available on Android!",
+                    110, () {
+                  launchURL(
+                      'https://firebasestorage.googleapis.com/v0/b/portfolio-c64dd.appspot.com/o/Portfolio.apk?alt=media&token=73a349f2-3011-4624-a95a-b1e05bd003bb');
+                }),
+              )
+          // (UniversalPlatform.isAndroid || UniversalPlatform.isIOS)
+          //     ? Container()
+          //     : Row(
+          //         mainAxisAlignment: MainAxisAlignment.center,
+          //         children: [
+          //           FadeTransition(
+          //             opacity: controller.button2Opacity,
+          //             child: primaryButton(
+          //                 context,
+          //                 Icons.android,
+          //                 Colors.green,
+          //                 Theme.of(context).primaryColor,
+          //                 190,
+          //                 "Available on Android!",
+          //                 110, () {
+          //               launchURL(
+          //                   'https://firebasestorage.googleapis.com/v0/b/portfolio-c64dd.appspot.com/o/Portfolio.apk?alt=media&token=73a349f2-3011-4624-a95a-b1e05bd003bb');
+          //             }),
+          //           ),
+          //           SizedBox(width: 20),
+          //           FadeTransition(
+          //             opacity: controller.button3Opacity,
+          //             child: primaryButton(
+          //                 context,
+          //                 FontAwesomeIcons.apple,
+          //                 Colors.black,
+          //                 Theme.of(context).primaryColor,
+          //                 190,
+          //                 "Available on iOS!",
+          //                 110,
+          //                 () {}),
+          //           ),
+          //         ],
+          //       )
         ],
       ),
     ),
