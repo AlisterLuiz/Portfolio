@@ -238,36 +238,37 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                currentPage = 0;
-                              });
-                              currentProjectID.setIndex(0);
-                            },
-                            icon: Icon(
-                              Icons.arrow_back,
-                              size: ScreenUtil().setSp(
-                                30,
-                                allowFontScalingSelf: true,
-                              ),
+                      Container(
+                        width: screenWidth(context) * 0.04,
+                        child: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              currentPage = 0;
+                            });
+                            currentProjectID.setIndex(0);
+                          },
+                          icon: Icon(
+                            Icons.arrow_back,
+                            // size: 30,
+                            size: ScreenUtil().setSp(
+                              30,
+                              allowFontScalingSelf: true,
                             ),
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            currentProjectName[currentProjectID.getIndex()],
-                            style: TextStyle(
-                              fontSize: ScreenUtil().setSp(
-                                30,
-                                allowFontScalingSelf: true,
-                              ),
+                        ),
+                      ),
+                      // SizedBox(width: 5),
+                      Expanded(
+                        flex: 1,
+                        child: Text(
+                          currentProjectName[currentProjectID.getIndex()],
+                          style: TextStyle(
+                            fontSize: ScreenUtil().setSp(
+                              35,
+                              allowFontScalingSelf: true,
                             ),
                           ),
-                        ],
+                        ),
                       ),
                       Row(
                         children: [
@@ -285,47 +286,52 @@ class _ProjectsPageLandscapeState extends State<ProjectsPageLandscape> {
                                       );
                                     });
                                   },
-                                  child: Icon(
-                                    Icons.chevron_left,
-                                    size: ScreenUtil().setSp(
-                                      30,
-                                      allowFontScalingSelf: true,
+                                  child: Container(
+                                    width: screenWidth(context) * 0.04,
+                                    child: Icon(
+                                      Icons.chevron_left,
+                                      size: ScreenUtil().setSp(
+                                        30,
+                                        allowFontScalingSelf: true,
+                                      ),
                                     ),
                                   ),
                                 )
                               : Container(),
-                          SizedBox(width: 10),
                           Text(
                             'Page ${currentPage + 1} of ${(project.length / 3).ceil()}',
                             style: TextStyle(
                               fontSize: ScreenUtil().setSp(
                                 30,
-                                allowFontScalingSelf: true,
+                                allowFontScalingSelf: false,
                               ),
                             ),
                           ),
-                          SizedBox(width: 10),
+                          // SizedBox(width: 20),
                           (currentPage != (project.length / 3).ceil() - 1)
-                              ? IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      (currentPage <
-                                              (project.length / 3).ceil() - 1)
-                                          ? currentPage += 1
-                                          : currentPage =
-                                              (project.length / 3).ceil() - 1;
-                                      controller.animateToPage(
-                                        currentPage,
-                                        duration: Duration(milliseconds: 500),
-                                        curve: Curves.easeInOut,
-                                      );
-                                    });
-                                  },
-                                  icon: Icon(
-                                    Icons.chevron_right,
-                                    size: ScreenUtil().setSp(
-                                      30,
-                                      allowFontScalingSelf: true,
+                              ? Container(
+                                  width: screenWidth(context) * 0.04,
+                                  child: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        (currentPage <
+                                                (project.length / 3).ceil() - 1)
+                                            ? currentPage += 1
+                                            : currentPage =
+                                                (project.length / 3).ceil() - 1;
+                                        controller.animateToPage(
+                                          currentPage,
+                                          duration: Duration(milliseconds: 500),
+                                          curve: Curves.easeInOut,
+                                        );
+                                      });
+                                    },
+                                    icon: Icon(
+                                      Icons.chevron_right,
+                                      size: ScreenUtil().setSp(
+                                        30,
+                                        allowFontScalingSelf: false,
+                                      ),
                                     ),
                                   ),
                                 )
